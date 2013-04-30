@@ -27,33 +27,40 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'	# / を単語の一部とみなさない記�
 function chpwd() { ls -F }			# cdコマンド後にlsを自動実行
 
 # apt-getやdpkgなどのキャッシュ
-if [ -d ~/.zsh/cache ]; then
-zstyle ':completion:*' use-cache yes
-zstyle ':completion:*' cache-path ~/.zsh/cache
-fi
+#if [ -d ~/.zsh/cache ]; then
+#zstyle ':completion:*' use-cache yes
+#zstyle ':completion:*' cache-path ~/.zsh/cache
+#fi
 
+#eval "$(rbenv init -)"
  
 #===========================================================================
 # 色
 #===========================================================================
-# 色の読み込み
-autoload -Uz colors
-colors
-    
-# 色の定義
-local DEFAULT=$'%{e[m%}'$
-local RED=$'%{e[1;31m%}'$
-local GREEN=$'%{e[1;32m%}'$
-local YELLOW=$'%{e[1;33m%}'$
-local BLUE=$'%{e[1;34m%}'$
-local PURPLE=$'%{e[1;35m%}'$
-local LIGHT_BLUE=$'%{e[1;36m%}'$
-local WHITE=$'%{e[1;37m%}'$
+# ls
+export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
+export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
+zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
 
-# 'dircolors -p'で出力されるものに手を加えて保存したものを読み込んでる。
-if [ -f ~/.dir_colors ]; then
-eval `dircolors -b ~/.dir_colors`
-fi
+# 色の読み込み
+autoload colors
+colors
+
+## 色の定義
+#local DEFAULT=$'%{e[m%}'$
+#local RED=$'%{e[1;31m%}'$
+#local GREEN=$'%{e[1;32m%}'$
+#local YELLOW=$'%{e[1;33m%}'$
+#local BLUE=$'%{e[1;34m%}'$
+#local PURPLE=$'%{e[1;35m%}'$
+#local LIGHT_BLUE=$'%{e[1;36m%}'$
+#local WHITE=$'%{e[1;37m%}'$
+
+PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%# %{${reset_color}%}"
+PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
+SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+SPROMPT="%{${fg[red]}%}correct: %R -> %r [n,y,a,e]? %{${reset_color}%}"
+
 
 #===========================================================================
 # 補完
@@ -148,36 +155,10 @@ alias ls="ls -GF"
 
 
 #===========================================================================
-# 未整理
+# z
 #===========================================================================
 . /usr/local/etc/profile.d/z.sh
 alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
-
-export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
-export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
-zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
-
-eval "$(rbenv init -)"
-
-autoload colors
-colors
-case ${UID} in
-0)
-    PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
-    PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
-    SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
-    ;;
-*)
-    PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
-    PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
-    SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-        PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') ${PROMPT}"
-    ;;
-esac
-
 
 
 #===========================================================================
