@@ -28,6 +28,7 @@ if has('win32')
   endif
 elseif has('mac')
   set guifont=Osaka−等幅:h14
+  "set guifont=Ricty:h14
 elseif has('xfontset')
   " UNIX用 (xfontsetを使用)
   set guifontset=a14,r14,k14

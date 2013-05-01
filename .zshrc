@@ -38,9 +38,9 @@ function chpwd() { ls -F }			# cdコマンド後にlsを自動実行
 # 色
 #===========================================================================
 # ls
-export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx
-export LS_COLORS='di=01;36:ln=01;35:ex=01;32'
-zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'
+#export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx						# 色の設定
+#export LS_COLORS='di=01;36:ln=01;35:ex=01;32'				# 補完時の色の設定
+#zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'	# 補完候補に色を付ける
 
 # 色の読み込み
 autoload colors
@@ -157,9 +157,11 @@ alias ls="ls -GF"
 #===========================================================================
 # z
 #===========================================================================
-. /usr/local/etc/profile.d/z.sh
-alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
-
+_Z_CMD=j
+source /usr/local/etc/profile.d/z.sh
+#precmd() {
+#	  _z --add "$(pwd -P)"
+#}
 
 #===========================================================================
 # ^を押すと上の階層へ
