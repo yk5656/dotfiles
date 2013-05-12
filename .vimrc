@@ -254,7 +254,7 @@ nnoremap <silent> <leader>, :MiniBufExplorer<CR>
 " taglist
 let Tlist_Use_Right_Window	= 1		" 右側に表示
 let Tlist_Show_One_File		= 1		" 常に一つしか表示しない
-let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
+let g:tlist_php_settings = 'php;f:function'
 "let Tlist_Ctags_Cmd			= '/usr/local/bin/ctags'
 nnoremap <silent> <leader>l :TlistToggle<CR>	" NERDTreeの表示をトグル
 
