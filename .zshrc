@@ -46,7 +46,7 @@ function chpwd() { ls -F }			# cdコマンド後にlsを自動実行
 autoload colors
 colors
 
-## 色の定義
+# 色の定義
 #local DEFAULT=$'%{e[m%}'$
 #local RED=$'%{e[1;31m%}'$
 #local GREEN=$'%{e[1;32m%}'$
@@ -157,7 +157,7 @@ alias ls="ls -GF"
 #===========================================================================
 # z
 #===========================================================================
-_Z_CMD=j
+#_Z_CMD=j
 source /usr/local/etc/profile.d/z.sh
 #precmd() {
 #	  _z --add "$(pwd -P)"
@@ -221,4 +221,7 @@ if ! is_screen_or_tmux_running && shell_has_started_interactively; then
 	done
 fi
 
+
+#Rails用設定
+eval "$(rbenv init -)"
 
