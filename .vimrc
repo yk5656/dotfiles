@@ -240,9 +240,12 @@ let NERDTreeShowHidden		= 1
 let NERDTreeShowBookmarks	= 1			" ツリーにブックマークも表示
 let NERDTreeChDirMode		= 2			" ブックマーク選択時、カレントディレクトリも変更
 let NERDTreeMapActivateNode	='<space>'	" スペースで開閉できるようにする
+let NERDTreeIgnore=['\.$', '\.\.$']
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
 "let NERDTreeIgnore = ['\.cvs$']
+" 最後に残ったウィンドウがNERDTREEのみのときはvimを閉じる
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " MiniBufExpl
 :let g:miniBufExplMapWindowNavVim		= 1
