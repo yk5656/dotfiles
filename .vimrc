@@ -217,12 +217,12 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
-Bundle 'fuenor/qfixgrep'
 "Bundle 'rgarver/Kwbd'
 "Bundle 'Smooth-Scroll'
 "Bundle 'QuickBuf'
 "Bundle 'rgarver/Kwbd.vim'
-"Bundle 'grep.vim'
+Bundle 'grep.vim'
+Bundle 'fuenor/qfixgrep'
 
 filetype plugin indent on
 
@@ -262,9 +262,9 @@ let g:tlist_php_settings = 'php;f:function'
 nnoremap <silent> <leader>l :TlistToggle<CR>	" NERDTreeの表示をトグル
 
 
-"---------------------------------------------------------------------------
 " grep
-"---------------------------------------------------------------------------
+let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
+let Grep_Skip_Dirs = '.svn'
 ""let Grep_Path = 'c:/cygwin/bin/grep.exe'
 "let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
 "let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
@@ -276,8 +276,6 @@ nnoremap <silent> <leader>l :TlistToggle<CR>	" NERDTreeの表示をトグル
 "let Grep_Find_Use_Xargs = 0
 ""let Grep_Cygwin_Find = 1 
 "let Grep_Shell_Quote_Char = '"'
-"let Grep_Skip_Dirs = '.svn'
-"let Grep_Skip_Files = '*.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
 "let Grep_Cygwin_Find = 1
 
 
