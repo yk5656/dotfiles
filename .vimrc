@@ -1,23 +1,23 @@
 colorscheme jellybeans
 
-" ターミナルタイプによるカラー設定
-" https://github.com/yuroyoro/dotfiles
-if &term =~ "xterm-256color" || "screen-256color"
-" 256色
-set t_Co=256
-set t_Sf= [3%dm
-set t_Sb= [4%dm
-elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-set t_Co=16
-set t_Sf= [3%dm
-set t_Sb= [4%dm
-elseif &term =~ "xterm-color"
-set t_Co=8
-set t_Sf= [3%dm
-set t_Sb= [4%dm
-endif
- 
-hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
+"" ターミナルタイプによるカラー設定
+"" https://github.com/yuroyoro/dotfiles
+"if &term =~ "xterm-256color" || "screen-256color"
+"" 256色
+"set t_Co=256
+"set t_Sf= [3%dm
+"set t_Sb= [4%dm
+"elseif &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
+"set t_Co=16
+"set t_Sf= [3%dm
+"set t_Sb= [4%dm
+"elseif &term =~ "xterm-color"
+"set t_Co=8
+"set t_Sf= [3%dm
+"set t_Sb= [4%dm
+"endif
+" 
+"hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
 
 "===========================================================================
 "
@@ -255,6 +255,12 @@ let g:ctrlp_max_height				= 20
 let g:ctrlp_extensions				= ['tag']
 let g:ctrlp_match_window_reversed	= 0
 nnoremap <silent> <C-@> :CtrlPBufTag<CR>
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
+  \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
+  \ 'PrtHistory(-1)':       ['<c-j>'],
+  \ 'PrtHistory(1)':        ['<c-k>'],
+  \ }
 
 " NERDTree
 let NERDTreeShowHidden		= 1
