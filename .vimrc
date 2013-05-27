@@ -87,9 +87,9 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 "set wildchar=<Tab>
 "set wildmode=longest:list,full
 "set matchtime=3	" 対応する括弧を表示する時間(1/10秒)
-"set textwidth=10	" テキストの最大幅
 "set formatoptions=q	"自動で改行を入れないようにする
 "set complete+=k	" 補完に辞書ファイル追加
+set textwidth=0		" テキストの最大幅
 
 
 "===========================================================================
