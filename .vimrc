@@ -25,7 +25,7 @@ colorscheme jellybeans
 "
 "===========================================================================
 syntax on
-let mapleader = ","		" <Leader>キーを「,」に変更
+let mapleader = ","	" <Leader>キーを「,」に変更
 set nocompatible	" Vi互換をオフ
 
 " ファイル
@@ -197,8 +197,12 @@ nnoremap <silent> <leader>rg :<C-u>source $MYGVIMRC<CR>
 "------------------------------------
 " ファンクションキー割り当て
 "------------------------------------
-"nnoremap <F1> K							" ヘルプ
-"nnoremap <silent> <F3> :Rgrep<CR>			" 再帰Grep
+" ヘルプ
+nnoremap <F1> K
+" 再帰Grep
+"nnoremap <silent> <F3> :Rgrep<CR>
+" 前回の検索結果
+"nnoremap <silent> <F4> :ToggleQFixWin<CR>
 "map <F6> <ESC>:TMiniBufExplorer<CR>		" タブ表示切替
 "nnoremap <F8> :source %<CR>				" vimrcを再読み込み
 "map <F11> <ESC>:set nowrap<CR>				" 折り返しをやめる
@@ -234,16 +238,19 @@ endif
 "xebug
 
 Bundle 'gmarik/vundle'
-Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'fholgado/minibufexpl.vim'
+Bundle 'buftabs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
 "Bundle 'rgarver/Kwbd'
 "Bundle 'Smooth-Scroll'
-"Bundle 'QuickBuf'
+Bundle 'QuickBuf'
 "Bundle 'rgarver/Kwbd.vim'
 Bundle 'grep.vim'
 Bundle 'fuenor/qfixgrep'
+"Bundle 'rking/ag.vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on
 
@@ -292,6 +299,8 @@ nnoremap <silent> <leader>l :TlistToggle<CR>	" NERDTreeの表示をトグル
 " grep
 let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
 let Grep_Skip_Dirs = '.svn'
+let QFix_Height = 20
+let QFix_PreviewEnable = 0
 ""let Grep_Path = 'c:/cygwin/bin/grep.exe'
 "let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
 "let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
@@ -305,7 +314,17 @@ let Grep_Skip_Dirs = '.svn'
 "let Grep_Shell_Quote_Char = '"'
 "let Grep_Cygwin_Find = 1
 
-
+" ******************** buftabs ********************
+" バッファタブにパスを省略してファイル名のみ表示する
+let g:buftabs_only_basename=1
+" バッファタブをステータスライン内に表示する
+let g:buftabs_in_statusline=1
+" 現在のバッファをハイライト
+let g:buftabs_active_highlight_group="Visual"
+" ステータスライン
+"set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
+" ステータスラインを常に表示
+set laststatus=2
 
 
 
