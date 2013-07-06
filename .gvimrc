@@ -32,6 +32,8 @@ elseif has('mac')
 elseif has('xfontset')
   " UNIX用 (xfontsetを使用)
   set guifontset=a14,r14,k14
+else
+  set guifont=MS\ Gothic\ 10
 endif
 
 " 色
