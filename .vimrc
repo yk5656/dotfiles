@@ -91,6 +91,8 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 "set complete+=k	" 補完に辞書ファイル追加
 set textwidth=0		" テキストの最大幅
 
+"vimrc_exambpleで上書きされるのを防止
+autocmd FileType text setlocal textwidth=0
 
 "===========================================================================
 "
