@@ -45,65 +45,72 @@ colors
 # プロンプト
 PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%# %{${reset_color}%}"
 PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
-SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
-SPROMPT="%{${fg[red]}%}correct: %R -> %r [n,y,a,e]? %{${reset_color}%}"
+SPROMPT="%{${fg[red]}%}correct: %R -> %r ? [n,y,a,e] %{${reset_color}%}"
 
 # ls
 export LSCOLORS=gxfxcxdxbxegedabagacag
 export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
 
+# 補完候補もLS_COLORSに合わせて色づけ。
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-#===========================================================================
+
+#--------------------------------------
 # 補完
-#===========================================================================
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}	# 補完候補もLS_COLORSに合わせて色づけ。
-
-# 自動補完
+#--------------------------------------
 autoload -Uz compinit
 compinit
 
-setopt always_last_prompt			# 補完のときプロンプトの位置を変えない
-setopt list_packed					# 補完候補を表示するときに出来るだけ詰めて表示。
-# setopt complete_aliases			# aliasを展開して補完。
-setopt auto_list					# 補完候補が複数ある時に、一覧表示する
-setopt list_types					#  auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
-setopt auto_menu					# 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完する
-setopt magic_equal_subst			# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
-setopt auto_param_keys				# カッコの対応などを自動的に補完する
-setopt complete_in_word				# 語の途中でもカーソル位置で補完
+# 補完候補が複数ある時に、一覧表示する
+setopt auto_list
+
+# 補完候補を表示するときに出来るだけ詰めて表示
+setopt list_packed
+
+# auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示
+setopt list_types
+
+# 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完する
+setopt auto_menu
+
+#setopt always_last_prompt			# 補完のときプロンプトの位置を変えない
+#etopt complete_aliases				# aliasを展開して補完。
+#setopt auto_param_keys				# カッコの対応などを自動的に補完する
+#setopt complete_in_word			# 語の途中でもカーソル位置で補完
+
+# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
+setopt magic_equal_subst
 
 # コマンドにsudoを付けてもきちんと補完出来るようにする。Ubuntuだと/etc/zsh/zshrcで設定されている。
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
- 
+
 # 大文字・小文字を区別しないで補完出来るようにするが、大文字を入力した場合は区別する。
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-   
-# zstyleによる補完設定
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
-zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
-zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
-zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
-zstyle ':completion:*:options' description 'yes'
-# グループ名に空文字列を指定すると，マッチ対象のタグ名がグループ名に使われる。
-# したがって，すべての マッチ種別を別々に表示させたいなら以下のようにする
-zstyle ':completion:*' group-name ''
 
-# 補完候補を矢印キーなどで選択出来るようにする。'select=3'のように指定した場合は、補完候補が3個以上ある時に選択出来るようになる。
-zstyle ':completion:*:default' menu select
-
-# 補完候補のメニュー選択で、矢印キーの代わりにhjklで移動出来るようにする。
-zmodload zsh/complist
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
+### zstyleによる補完設定
+##zstyle ':completion:*' verbose yes
+##zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+##zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
+##zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
+##zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
+##zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
+##zstyle ':completion:*:options' description 'yes'
+### グループ名に空文字列を指定すると，マッチ対象のタグ名がグループ名に使われる。
+### したがって，すべての マッチ種別を別々に表示させたいなら以下のようにする
+##zstyle ':completion:*' group-name ''
+#
+## 補完候補をvi風に選択できるようにする
+#zstyle ':completion:*:default' menu select
+#zmodload zsh/complist
+#bindkey -M menuselect 'h' vi-backward-char
+#bindkey -M menuselect 'j' vi-down-line-or-history
+#bindkey -M menuselect 'k' vi-up-line-or-history
+#bindkey -M menuselect 'l' vi-forward-char
 
 
-#===========================================================================
+#--------------------------------------
 # 履歴
-#===========================================================================
+#--------------------------------------
 HISTFILE=~/.zsh/.zsh_histfile		# コマンド履歴を保存するファイル名。
 HISTSIZE=10000						# 記憶される履歴の数。
 SAVEHIST=100000						# 保存される履歴の数。
