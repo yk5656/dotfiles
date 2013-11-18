@@ -140,10 +140,12 @@ bindkey "^N" history-beginning-search-forward-end
 #--------------------------------------
 case "${OSTYPE}" in
 darwin*)
+  # Mac用設定
   alias ls="ls -GF"
   ;;
 linux*)
-  alias ls='ls --color'
+  # Linux用設定
+  alias ls='ls -F --color'
   ;;
 esac
 #alias -g L='| $PAGER'
