@@ -139,7 +139,7 @@ bindkey "^N" history-beginning-search-forward-end
 #--------------------------------------
 # エイリアス
 #--------------------------------------
-alias ls="ls -GF"
+alias ls="ls -GF --color=auto"
 #alias -g L='| $PAGER'
 #alias -g G='| grep'
 #alias -g V='| vim -R -'
