@@ -1,30 +1,33 @@
-#===========================================================================
+#--------------------------------------
 # 基本
-#===========================================================================
-export PAGER=lv						# PAGER
-export LANG=ja_JP.UTF-8				# LANG 設定
+#--------------------------------------
+# 文字コード
+export LANG=ja_JP.UTF-8
 
-# その他
-setopt NO_beep						# ビープ音を鳴らさないようにする
-setopt prompt_subst					# エスケープシーケンスを通すオプション
-setopt transient_rprompt			# コマンドを実行するときに右プロンプトを消す。他の端末等にコピペするときに便利。
-setopt interactive_comments			# コマンドラインでも # 以降をコメントと見なす
+# ビープ音を鳴らさないようにする
+setopt NO_beep
 
+# コマンドのスペルミスを指摘
+setopt correct
+
+#export PAGER=lv					# PAGER
+#setopt prompt_subst				# エスケープシーケンスを通すオプション
+#setopt transient_rprompt			# コマンドを実行するときに右プロンプトを消す。他の端末等にコピペするときに便利。
+#setopt interactive_comments		# コマンドラインでも # 以降をコメントと見なす
 #setopt auto_cd						# ディレクトリ名を入力するとそこに移動出来る。
-# setopt glog_dots					# ドットファイルにマッチさせるために先頭に'.'を付ける必要がなくなる。
-setopt correct						# コマンドのスペルミスを指摘
-setopt multios						#  複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
-setopt brace_ccl					# {a-c} を a b c に展開する機能を使えるようにする
-setopt extended_glob				# ファイル名で , ~, ^ の 3 文字を正規表現として扱う
-setopt auto_resume					# サスペンド中のプロセスと同じコマンド名を実行した場合はリジュームする
-setopt rm_star_silent				#  rm * などの際、本当に全てのファイルを消して良いかの確認しないようになる
-setopt short_loops					#  for, repeat, select, if, function などで簡略文法が使えるようになる
+#setopt glog_dots					# ドットファイルにマッチさせるために先頭に'.'を付ける必要がなくなる。
+#setopt multios						#  複数のリダイレクトやパイプなど、必要に応じて tee や cat の機能が使われる
+#setopt brace_ccl					# {a-c} を a b c に展開する機能を使えるようにする
+#setopt extended_glob				# ファイル名で , ~, ^ の 3 文字を正規表現として扱う
+#setopt auto_resume					# サスペンド中のプロセスと同じコマンド名を実行した場合はリジュームする
+#setopt rm_star_silent				#  rm * などの際、本当に全てのファイルを消して良いかの確認しないようになる
+#setopt short_loops					#  for, repeat, select, if, function などで簡略文法が使えるようになる
 # setopt xtrace						#  コマンドラインがどのように展開され実行されたかを表示するようになる
-setopt autoremoveslash				# ディレクトリの最後のスラッシュを自動で削除する
+#setopt autoremoveslash				# ディレクトリの最後のスラッシュを自動で削除する
 # setopt chase_links				# シンボリックリンクは実体を追うようになる
 
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'	# / を単語の一部とみなさない記号の環境変数から削除
-function chpwd() { ls -F }			# cdコマンド後にlsを自動実行
+#WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'	# / を単語の一部とみなさない記号の環境変数から削除
+#function chpwd() { ls -F }			# cdコマンド後にlsを自動実行
 
 # apt-getやdpkgなどのキャッシュ
 #if [ -d ~/.zsh/cache ]; then
@@ -32,34 +35,23 @@ function chpwd() { ls -F }			# cdコマンド後にlsを自動実行
 #zstyle ':completion:*' cache-path ~/.zsh/cache
 #fi
 
-#eval "$(rbenv init -)"
  
 #===========================================================================
 # 色
 #===========================================================================
-# ls
-#export LSCOLORS=gxfxxxxxcxxxxxxxxxgxgx						# 色の設定
-#export LS_COLORS='di=01;36:ln=01;35:ex=01;32'				# 補完時の色の設定
-#zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'ex=32'	# 補完候補に色を付ける
-
-# 色の読み込み
+# 名前で色を付けるようにする
 autoload colors
 colors
 
-# 色の定義
-#local DEFAULT=$'%{e[m%}'$
-#local RED=$'%{e[1;31m%}'$
-#local GREEN=$'%{e[1;32m%}'$
-#local YELLOW=$'%{e[1;33m%}'$
-#local BLUE=$'%{e[1;34m%}'$
-#local PURPLE=$'%{e[1;35m%}'$
-#local LIGHT_BLUE=$'%{e[1;36m%}'$
-#local WHITE=$'%{e[1;37m%}'$
-
+# プロンプト
 PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%# %{${reset_color}%}"
 PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
 SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
 SPROMPT="%{${fg[red]}%}correct: %R -> %r [n,y,a,e]? %{${reset_color}%}"
+
+# ls
+export LSCOLORS=gxfxcxdxbxegedabagacag
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
 
 
 #===========================================================================
@@ -123,8 +115,6 @@ unset HISTFILE
 SAVEHIST=0
 fi
 
-setopt auto_pushd					# cd -[TAB] で以前移動したディレクトリの候補を提示
-setopt pushd_ignore_dups			# auto_pushdで重複するディレクトリは記録しない
 setopt share_history				# 履歴を複数端末間で共有する。
 setopt append_history				# 複数の zsh を同時に使う時など history ファイルに上書きせず追加する
 setopt hist_ignore_all_dups			# 重複するコマンドが記憶されるとき、古い方を削除する。
@@ -134,6 +124,10 @@ setopt extended_history				# zsh の開始・終了時刻をヒストリファ�
 setopt hist_ignore_space			# コマンドラインの先頭がスペースで始まる場合ヒストリに追加しない
 setopt hist_verify					# ヒストリを呼び出してから実行する間に一旦編集できる状態になる
 
+# cd
+setopt auto_pushd					# cd -[TAB] で以前移動したディレクトリの候補を提示
+setopt pushd_ignore_dups			# auto_pushdで重複するディレクトリは記録しない
+
 # 履歴検索
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -142,9 +136,9 @@ bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
 
-#===========================================================================
+#--------------------------------------
 # エイリアス
-#===========================================================================
+#--------------------------------------
 alias ls="ls -GF"
 #alias -g L='| $PAGER'
 #alias -g G='| grep'
@@ -154,41 +148,42 @@ alias ls="ls -GF"
 #alias lla='ls -al'
 
 
-#===========================================================================
+#--------------------------------------
 # z
-#===========================================================================
+#--------------------------------------
 #_Z_CMD=j
-source /usr/local/etc/profile.d/z.sh
+#source /usr/local/etc/profile.d/z.sh
 #precmd() {
 #	  _z --add "$(pwd -P)"
 #}
 
-#===========================================================================
+
+#--------------------------------------
 # ^を押すと上の階層へ
-#===========================================================================
-cdup() {
-if [ -z "$BUFFER" ]; then
-echo
-cd ..
-if type precmd > /dev/null 2>&1; then
-precmd
-fi
-local precmd_func
-for precmd_func in $precmd_functions; do
-$precmd_func
-done
-zle reset-prompt
-else
-zle self-insert '^'
-fi
-}
-zle -N cdup
-bindkey '\^' cdup
+#--------------------------------------
+#cdup() {
+#if [ -z "$BUFFER" ]; then
+#echo
+#cd ..
+#if type precmd > /dev/null 2>&1; then
+#precmd
+#fi
+#local precmd_func
+#for precmd_func in $precmd_functions; do
+#$precmd_func
+#done
+#zle reset-prompt
+#else
+#zle self-insert '^'
+#fi
+#}
+#zle -N cdup
+#bindkey '\^' cdup
 
 
-#===========================================================================
+#--------------------------------------
 # tmux自動起動
-#===========================================================================
+#--------------------------------------
 is_screen_running() {
 	# tscreen also uses this varariable.
 	[ ! -z "$WINDOW" ]
@@ -221,7 +216,11 @@ if ! is_screen_or_tmux_running && shell_has_started_interactively; then
 	done
 fi
 
+#--------------------------------------
+# その他
+#--------------------------------------
 
 #Rails用設定
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
+
 
