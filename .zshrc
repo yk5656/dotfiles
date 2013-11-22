@@ -233,7 +233,8 @@ esac
 # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
 if [ -z $TMUX ]; then
 	if $(tmux has-session 2> /dev/null); then
-		tmux -2 attach
+#		tmux -2 attach
+		tmux -2
 	else
 		tmux -2
 	fi
