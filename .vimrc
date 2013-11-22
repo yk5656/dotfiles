@@ -1,4 +1,5 @@
-colorscheme jellybeans
+"colorscheme jellybeans
+colorscheme molokai
 
 "" ターミナルタイプによるカラー設定
 "" https://github.com/yuroyoro/dotfiles
@@ -66,7 +67,7 @@ set wildmenu		" コマンドライン補完するときに強化されたもの�
 
 " その他
 set history=100		" コマンド・検索パターンの履歴数
-set clipboard=unnamedplus	" クリップボードをWindowsと連携
+set clipboard=unnamed	" クリップボードをWindowsと連携
 set formatoptions+=mM	" テキスト挿入中の自動折り返しを日本語に対応させる
 set backspace=indent,eol,start	" BSでインデントや改行を削除できるようにする
 set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P 
