@@ -125,6 +125,9 @@ nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
+" ctags生成
+nnoremap <leader>c :!ctags -R<CR>
+
 " ファンクションキー割り当て
 " ヘルプ
 "nnoremap <F1> K
@@ -164,8 +167,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'QuickBuf'
 Bundle 'grep.vim'
 Bundle 'fuenor/qfixgrep'
-Bundle 'terryma/vim-multiple-cursors'
 Bundle 'yk5656/vim-bquit'
+"Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'rking/ag.vim'
 
 filetype plugin indent on
