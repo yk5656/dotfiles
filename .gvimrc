@@ -37,10 +37,6 @@ else
 endif
 
 " 色
-colorscheme jellybeans
-"colorscheme my_color
-"colorscheme hybrid
-"colorscheme morning
-"colorscheme DevC++
-"colorscheme desert
+"colorscheme jellybeans
+colorscheme molokai
 
