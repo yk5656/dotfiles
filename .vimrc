@@ -104,11 +104,8 @@ nmap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
 nnoremap <C-]> g<C-]> 
 
 " Ctrl+nで次のバッファを表示、Ctrl+Pで前のバッファを表示
-"map <C-N> :bnext<CR>
-"map <C-P> :bprevious<CR>
-"nnoremap <silent> <C-p> :bprevious<CR>
-"nnoremap <silent> <C-n> :bnext<CR>
-"※CtrlPはCtrlPプラグインに割り当て済み
+nnoremap <silent> <C-p> :bprevious<CR>
+nnoremap <silent> <C-n> :bnext<CR>
 
 " Ctrl+jでESC
 inoremap <silent> <C-j> <esc>
@@ -118,6 +115,15 @@ nnoremap <silent> <leader>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <leader>eg :<C-u>edit $MYGVIMRC<CR>
 nnoremap <silent> <leader>rv :<C-u>source $MYVIMRC<CR>
 nnoremap <silent> <leader>rg :<C-u>source $MYGVIMRC<CR>
+
+" プラグイン関連
+nnoremap :q<CR> :<C-u>Bquit<CR>
+nnoremap <silent> <leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <leader>f :NERDTreeFind<CR>
+nnoremap <silent> <leader>l :TlistToggle<CR>
+nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
+nnoremap <silent> <leader>p :CtrlP<CR>
+nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
 " ファンクションキー割り当て
 " ヘルプ
@@ -166,12 +172,6 @@ filetype plugin indent on
 
 
 "--------------------------------------
-" Bquit
-"--------------------------------------
-nnoremap :q<CR> :<C-u>Bquit<CR>
-
-
-"--------------------------------------
 " NERDTree
 "--------------------------------------
 let NERDTreeShowHidden		= 1
@@ -179,8 +179,6 @@ let NERDTreeShowBookmarks	= 1			" ツリーにブックマークも表示
 let NERDTreeChDirMode		= 2			" ブックマーク選択時、カレントディレクトリも変更
 let NERDTreeMapActivateNode	='<space>'	" スペースで開閉できるようにする
 let NERDTreeIgnore=['\.$', '\.\.$']
-nnoremap <silent> <leader>t :NERDTreeToggle<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR>
 "let NERDTreeIgnore = ['\.cvs$']
 " 最後に残ったウィンドウがNERDTREEのみのときはvimを閉じる
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -193,22 +191,17 @@ let Tlist_Use_Right_Window	= 1		" 右側に表示
 let Tlist_Show_One_File		= 1		" 常に一つしか表示しない
 let g:tlist_php_settings = 'php;f:function'
 "let Tlist_Ctags_Cmd			= '/usr/local/bin/ctags'
-nnoremap <silent> <leader>l :TlistToggle<CR>	" NERDTreeの表示をトグル
 
 
 "--------------------------------------
 " buftabs
 "--------------------------------------
-" バッファタブにパスを省略してファイル名のみ表示する
-let g:buftabs_only_basename=1
-" バッファタブをステータスライン内に表示する
-let g:buftabs_in_statusline=1
-" 現在のバッファをハイライト
-let g:buftabs_active_highlight_group="Visual"
+let g:buftabs_only_basename=1		" バッファタブにパスを省略してファイル名のみ表示する
+let g:buftabs_in_statusline=1		" バッファタブをステータスライン内に表示する
+let g:buftabs_active_highlight_group="Visual"	" 現在のバッファをハイライト
+set laststatus=2	" ステータスラインを常に表示
 " ステータスライン
 "set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
-" ステータスラインを常に表示
-set laststatus=2
 
 
 "--------------------------------------
@@ -219,14 +212,12 @@ let g:ctrlp_by_filename				= 1
 let g:ctrlp_max_height				= 20
 let g:ctrlp_extensions				= ['tag']
 let g:ctrlp_match_window_reversed	= 0
-nnoremap <silent> <C-@> :CtrlPBufTag<CR>
 let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
   \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
   \ 'PrtHistory(-1)':       ['<c-j>'],
   \ 'PrtHistory(1)':        ['<c-k>'],
   \ }
-
 
 
 "--------------------------------------
