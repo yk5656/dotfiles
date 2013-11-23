@@ -124,6 +124,7 @@ nnoremap <silent> <leader>l :TlistToggle<CR>
 nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>g :Rgrep<CR>
 
 " ctags生成
 nnoremap <leader>c :!ctags -R<CR>
@@ -159,15 +160,16 @@ else
   call vundle#rc()
 endif
 
+Bundle 'yk5656/vim-bquit'
 Bundle 'gmarik/vundle'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
 Bundle 'buftabs'
 Bundle 'kien/ctrlp.vim'
-Bundle 'QuickBuf'
+
 Bundle 'grep.vim'
-Bundle 'fuenor/qfixgrep'
-Bundle 'yk5656/vim-bquit'
+"Bundle 'fuenor/qfixgrep'
+"Bundle 'QuickBuf'
 "Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'rking/ag.vim'
 
@@ -210,6 +212,7 @@ set laststatus=2	" ステータスラインを常に表示
 "--------------------------------------
 " CtrlP
 "--------------------------------------
+let g:ctrlp_map						= ''
 let g:ctrlp_working_path_mode		= 0
 let g:ctrlp_by_filename				= 1
 let g:ctrlp_max_height				= 20
@@ -226,10 +229,12 @@ let g:ctrlp_prompt_mappings = {
 "--------------------------------------
 " grep
 "--------------------------------------
+let Grep_Default_Filelist = '*.txt *.log *.html *.css *.js *.php *.ctp'
+let Grep_Skip_Dirs = '.svn .git'
 let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
-let Grep_Skip_Dirs = '.svn'
-let QFix_Height = 20
-let QFix_PreviewEnable = 0
+let Grep_Default_Options = '-i'
+"let QFix_Height = 40
+"let QFix_PreviewEnable = 0
 ""let Grep_Path = 'c:/cygwin/bin/grep.exe'
 "let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
 "let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
