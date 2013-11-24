@@ -110,24 +110,34 @@ nnoremap <silent> <C-n> :bnext<CR>
 " Ctrl+jでESC
 inoremap <silent> <C-j> <esc>
 
+" コマンドラインをEmacs風に編集する
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+
 " .vimrc/.gvimrcの編集/反映
 nnoremap <silent> <leader>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <leader>eg :<C-u>edit $MYGVIMRC<CR>
-nnoremap <silent> <leader>rv :<C-u>source $MYVIMRC<CR>
-nnoremap <silent> <leader>rg :<C-u>source $MYGVIMRC<CR>
+nnoremap <silent> <leader>s :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR>
 
 " プラグイン関連
-nnoremap :q<CR> :<C-u>Bquit<CR>
+nnoremap :q<CR> :Bquit<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
 nnoremap <silent> <leader>l :TlistToggle<CR>
-nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
+nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <leader>g :Rgrep<CR>
+"nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
+
+" vim-over
+nnoremap <silent> <Leader>r :OverCommandLine<CR>%s/
+vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
 
 " ctags生成
 nnoremap <leader>c :!ctags -R<CR>
+
 
 " ファンクションキー割り当て
 " ヘルプ
@@ -172,6 +182,8 @@ Bundle 'grep.vim'
 "Bundle 'QuickBuf'
 "Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'rking/ag.vim'
+
+Bundle 'osyo-manga/vim-over'
 
 filetype plugin indent on
 
@@ -238,7 +250,6 @@ let Grep_Default_Options = '-i'
 ""let Grep_Path = 'c:/cygwin/bin/grep.exe'
 "let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
 "let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
-"
 ""let Grep_Path = 'c:/GnuWin32/bin/grep.exe'
 ""let Grep_Find_Path = 'c:/GnuWin32/bin/find.exe'
 ""let Grep_Xargs_Path = 'c:/GnuWin32/bin/xargs.exe'
@@ -247,7 +258,6 @@ let Grep_Default_Options = '-i'
 ""let Grep_Cygwin_Find = 1 
 "let Grep_Shell_Quote_Char = '"'
 "let Grep_Cygwin_Find = 1
-
 
 
 
@@ -262,4 +272,27 @@ let Grep_Default_Options = '-i'
 au BufNewFile,BufRead *.txt set filetype=mine
 
 
+
+"===========================================================================
+"
+" テスト
+"
+"===========================================================================
+nnoremap <silent> <leader>bi :BufInfo<CR>
+function! s:BufInfo()
+	echo "bufnr('%')=" . bufnr('%')
+	echo "bufnr('#')=" . bufnr('#')
+	echo "bufnr('$')=" . bufnr('$')
+	echo "winnr()="    . winnr()
+	echo "winnr('#')=" . winnr('#')
+	echo "winnr('$')=" . winnr('$')
+	echo "winbufnr()=" . winbufnr('$')
+	for i in range(1, bufnr('$'))
+		echo i.': bufnr='.bufnr(i).' bufexists='.bufexists(i).' buflisted='.buflisted(i).' bufloaded='.bufloaded(i).' bufname='.bufname(i)
+	endfor
+	for i in range(1, winnr('$'))
+		echo i.' winbufnr='.winbufnr(i)
+	endfor
+endfunction
+command! -nargs=0 BufInfo call s:BufInfo()
 
