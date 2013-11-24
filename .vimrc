@@ -263,7 +263,7 @@ let Grep_Default_Options = '-i'
 
 "===========================================================================
 "
-" オリジナル
+" その他
 "
 "===========================================================================
 
@@ -272,27 +272,8 @@ let Grep_Default_Options = '-i'
 au BufNewFile,BufRead *.txt set filetype=mine
 
 
-
-"===========================================================================
-"
-" テスト
-"
-"===========================================================================
-nnoremap <silent> <leader>bi :BufInfo<CR>
-function! s:BufInfo()
-	echo "bufnr('%')=" . bufnr('%')
-	echo "bufnr('#')=" . bufnr('#')
-	echo "bufnr('$')=" . bufnr('$')
-	echo "winnr()="    . winnr()
-	echo "winnr('#')=" . winnr('#')
-	echo "winnr('$')=" . winnr('$')
-	echo "winbufnr()=" . winbufnr('$')
-	for i in range(1, bufnr('$'))
-		echo i.': bufnr='.bufnr(i).' bufexists='.bufexists(i).' buflisted='.buflisted(i).' bufloaded='.bufloaded(i).' bufname='.bufname(i)
-	endfor
-	for i in range(1, winnr('$'))
-		echo i.' winbufnr='.winbufnr(i)
-	endfor
-endfunction
-command! -nargs=0 BufInfo call s:BufInfo()
+" ローカルのvimrcを読み込む
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
 
