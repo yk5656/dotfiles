@@ -53,7 +53,7 @@ set clipboard=unnamed	" クリップボードをWindowsと連携
 set formatoptions+=mM	" テキスト挿入中の自動折り返しを日本語に対応させる
 set backspace=indent,eol,start	" BSでインデントや改行を削除できるようにする
 set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P 
-
+set ambiwidth=double	"Ubuntuで全角記号がうまく表示されない問題への対策
 
 "===========================================================================
 "
