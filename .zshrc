@@ -161,7 +161,9 @@ esac
 #alias ll='ls -l'
 #alias la='ls -a'
 #alias lla='ls -al'
-
+#centosにsshするとviで下記のエラーが出ることがあるので対策
+#E437: terminal capability "cm" required  
+alias ssh='TERM=xterm ssh'
 
 #--------------------------------------
 # z
