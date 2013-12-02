@@ -242,7 +242,7 @@ let g:ctrlp_prompt_mappings = {
 "--------------------------------------
 " grep
 "--------------------------------------
-let Grep_Default_Filelist = '*.txt *.log *.html *.css *.js *.php *.ctp'
+let Grep_Default_Filelist = '*.txt *.html *.css *.js *.php *.ctp'
 let Grep_Skip_Dirs = '.svn .git'
 let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
 let Grep_Default_Options = '-i'
