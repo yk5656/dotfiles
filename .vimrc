@@ -119,8 +119,11 @@ cnoremap <C-B> <Left>
 " .vimrc/.gvimrcの編集/反映
 nnoremap <silent> <leader>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <leader>eg :<C-u>edit $MYGVIMRC<CR>
-nnoremap <silent> <leader>eV :<C-u>edit ~/.vimrc.local<CR>
+if has('gui_running')
 nnoremap <silent> <leader>s :<C-u>source $MYVIMRC<CR>:<C-u>source $MYGVIMRC<CR>
+else
+nnoremap <silent> <leader>s :<C-u>source $MYVIMRC<CR>
+endif
 
 " プラグイン関連
 nnoremap :q<CR> :Bquit<CR>
@@ -278,3 +281,4 @@ au BufNewFile,BufRead *.txt set filetype=mine
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
+
