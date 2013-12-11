@@ -63,10 +63,12 @@ set ambiwidth=double	"Ubuntuで全角記号がうまく表示されない問題�
 "===========================================================================
 
 "入力モード時、ステータスラインのカラーを変更
+
+highlight statusline term=NONE cterm=NONE guifg=black ctermfg=black ctermbg=6
 augroup InsertHook
 autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 ctermfg=black ctermbg=yellow
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 ctermfg=black ctermbg=cyan
+autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 gui=none cterm=none ctermfg=black ctermbg=3
+autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
 augroup END
 
 "vimrc_exambpleで上書きされるのを防止
