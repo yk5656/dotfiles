@@ -38,5 +38,5 @@ endif
 
 " 色
 "colorscheme jellybeans
-"colorscheme molokai
+colorscheme molokai			" Macではなぜかgvimrcにも書いておかないとおかしくなる
 
