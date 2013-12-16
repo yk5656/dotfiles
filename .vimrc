@@ -198,7 +198,7 @@ filetype plugin indent on
 "--------------------------------------
 " NERDTree
 "--------------------------------------
-let NERDTreeShowHidden		= 1
+"let NERDTreeShowHidden		= 1
 let NERDTreeShowBookmarks	= 1			" ツリーにブックマークも表示
 let NERDTreeChDirMode		= 2			" ブックマーク選択時、カレントディレクトリも変更
 let NERDTreeMapActivateNode	='<space>'	" スペースで開閉できるようにする
