@@ -4,7 +4,7 @@
 "
 "===========================================================================
 
-set lines=168		" 縦幅
+set lines=60		" 縦幅
 set columns=160		" 横幅
 
 " GUIオプション
@@ -38,5 +38,5 @@ endif
 
 " 色
 "colorscheme jellybeans
-"colorscheme molokai
+colorscheme molokai			" Macではなぜかgvimrcにも書いておかないとおかしくなる
 
