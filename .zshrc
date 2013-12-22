@@ -246,7 +246,7 @@ fi
 # その他
 #--------------------------------------
 
-#Rails用設定
-#eval "$(rbenv init -)"
 
+# ローカルのzshrcを読み込む
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
