@@ -133,6 +133,7 @@ nnoremap :q<CR> :Bquit<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
 nnoremap <silent> <leader>l :TlistToggle<CR>
+nnoremap <silent> <leader>L :TlistOpen<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
@@ -199,7 +200,7 @@ filetype plugin indent on
 "--------------------------------------
 " NERDTree
 "--------------------------------------
-let NERDTreeShowHidden		= 1
+"let NERDTreeShowHidden		= 1
 let NERDTreeShowBookmarks	= 1			" ツリーにブックマークも表示
 let NERDTreeChDirMode		= 2			" ブックマーク選択時、カレントディレクトリも変更
 let NERDTreeMapActivateNode	='<space>'	" スペースで開閉できるようにする
