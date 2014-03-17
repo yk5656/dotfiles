@@ -103,11 +103,6 @@ setopt hist_ignore_all_dups
 autoload colors
 colors
 
-# プロンプト
-PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%# %{${reset_color}%}"
-PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
-SPROMPT="%{${fg[red]}%}correct: %R -> %r ? [n,y,a,e] %{${reset_color}%}"
-
 # ls
 export LSCOLORS=gxfxcxdxbxegedabagacag
 export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
@@ -126,6 +121,36 @@ linux*)
   alias ls='ls -F --color'
   ;;
 esac
+
+
+#
+# プロンプト
+#
+
+# 左側には「ユーザー名@ホスト名 カレントティレクトリ $ 」
+#PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%# %{${reset_color}%} %(!.#.$)%f"
+PROMPT="%{${fg[green]}%}%n@%m %{${fg[yellow]}%}%~ %{${fg[red]}%}%(!.#.$)%f %{${reset_color}%}"
+PROMPT2="%{${fg[yellow]}%} %_ > %{${reset_color}%}"
+SPROMPT="%{${fg[red]}%}correct: %R -> %r ? [n,y,a,e] %{${reset_color}%}"
+
+# 右側にはgit関連の情報
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{cyan}%S %F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+  LANG=en_US.UTF-8 vcs_info
+}
+RPROMPT='${vcs_info_msg_0_}'
+#precmd () {
+#  psvar=()
+#  LANG=en_US.UTF-8 vcs_info
+#  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+#}
+#RPROMPT="%1(v|%F{green}%1v%f|)"
 
 
 #
