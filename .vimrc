@@ -22,9 +22,9 @@ let mapleader = ","
 syntax on
 
 " カラースキーマ
-"colorscheme molokai
+colorscheme molokai
 "colorscheme jellybeans
-colorscheme hybrid
+"colorscheme hybrid
 
 " ステータスラインのカラーの設定（挿入モード時に色を変える）
 "highlig statuslin term=NONE cterm=NONE guifg=black ctermfg=black ctermbg=6
