@@ -152,7 +152,7 @@ set clipboard=unnamedplus
 "set backspace=indent,eol,start
 
 " Ubuntuで全角記号がうまく表示されない問題への対策
-"set ambiwidth=double
+set ambiwidth=double
 
 
 
