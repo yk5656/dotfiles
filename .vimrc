@@ -177,7 +177,7 @@ nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 
-" Yで行末までコピー
+" Yでカーソル位置から行末までコピー
 nnoremap Y y$
 
 " Escの2回押しでハイライト消去
