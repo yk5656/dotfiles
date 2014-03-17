@@ -177,6 +177,9 @@ nmap <C-k> <C-w>k
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 
+" Yで行末までコピー
+nnoremap Y y$
+
 " Escの2回押しでハイライト消去
 set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
