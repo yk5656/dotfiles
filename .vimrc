@@ -277,6 +277,8 @@ Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
 Bundle 'buftabs'
 Bundle 'kien/ctrlp.vim'
+Bundle 'surround.vim'
+Bundle 'gcmt/wildfire.vim'
 
 Bundle 'grep.vim'
 "Bundle 'fuenor/qfixgrep'
