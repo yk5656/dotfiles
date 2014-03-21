@@ -5,6 +5,11 @@ ln -s $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
 
 mkdir $HOME/.vim
+
+mkdir $HOME/.vim/bundle
+cd $HOME/.vim/colors
+git clone http://github.com/gmarik/vundle.git
+
 mkdir $HOME/.vim/colors
 cd $HOME/.vim/colors
 wget http://www.vim.org/scripts/download_script.php?src_id=9750  -O morokai.vim
