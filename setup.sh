@@ -7,7 +7,7 @@ ln -s $HOME/dotfiles/.vimrc $HOME/.vimrc
 mkdir $HOME/.vim
 
 mkdir $HOME/.vim/bundle
-cd $HOME/.vim/colors
+cd $HOME/.vim/bundle
 git clone http://github.com/gmarik/vundle.git
 
 mkdir $HOME/.vim/colors
