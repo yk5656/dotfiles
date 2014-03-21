@@ -12,7 +12,7 @@ git clone http://github.com/gmarik/vundle.git
 
 mkdir $HOME/.vim/colors
 cd $HOME/.vim/colors
-wget http://www.vim.org/scripts/download_script.php?src_id=9750  -O morokai.vim
+wget http://www.vim.org/scripts/download_script.php?src_id=9750  -O molokai.vim
 wget http://www.vim.org/scripts/download_script.php?src_id=17225 -O jellybeans.vim
 wget http://www.vim.org/scripts/download_script.php?src_id=19720 -O hybrid.vim
 
