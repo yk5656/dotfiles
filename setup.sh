@@ -8,7 +8,7 @@ mkdir $HOME/.vim
 
 mkdir $HOME/.vim/bundle
 cd $HOME/.vim/bundle
-git clone http://github.com/gmarik/vundle.git
+git clone https://github.com/gmarik/vundle.git
 
 mkdir $HOME/.vim/colors
 cd $HOME/.vim/colors
