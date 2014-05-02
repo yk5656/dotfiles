@@ -241,6 +241,7 @@ nnoremap <silent> <leader>L :TlistOpen<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>, :CtrlPBuffer<CR>
 nnoremap <silent> <leader>g :Rgrep<CR>
 "nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
 
