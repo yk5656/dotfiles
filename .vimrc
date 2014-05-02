@@ -236,6 +236,7 @@ nnoremap <leader>c :!ctags -R<CR>
 " プラグイン関連
 nnoremap :q<CR> :Bquit<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <leader>T :NERDTreeFind<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
 nnoremap <silent> <leader>l :TlistToggle<CR>
 nnoremap <silent> <leader>L :TlistOpen<CR>
