@@ -382,3 +382,27 @@ if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
 
+
+
+
+
+
+
+
+
+nnoremap J 10j
+nnoremap K 10k
+nnoremap L 10l
+nnoremap H 10h
+
+Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
+nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
+
+let g:pdv_cfg_Type = "type"
+let g:pdv_cfg_Package = ""
+let g:pdv_cfg_Version = ""
+let g:pdv_cfg_Author = ""
+let g:pdv_cfg_Copyright = ""
+let g:pdv_cfg_License = ""
+
+
