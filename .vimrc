@@ -283,6 +283,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'surround.vim'
 Bundle 'gcmt/wildfire.vim'
 
+Bundle 'Shougo/neocomplcache'
+
 Bundle 'grep.vim'
 "Bundle 'fuenor/qfixgrep'
 "Bundle 'QuickBuf'
@@ -365,6 +367,9 @@ let Grep_Default_Options = '-i'
 "let Grep_Shell_Quote_Char = '"'
 "let Grep_Cygwin_Find = 1
 
+
+let g:neocomplcache_enable_at_startup = 1
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 "===========================================================================
