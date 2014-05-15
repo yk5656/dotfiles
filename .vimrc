@@ -284,6 +284,10 @@ Bundle 'surround.vim'
 Bundle 'gcmt/wildfire.vim'
 
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet.vim'
+Bundle 'Shougo/neosnippet-snippets'
+
+Bundle 'scrooloose/syntastic'
 
 Bundle 'grep.vim'
 "Bundle 'fuenor/qfixgrep'
@@ -292,6 +296,7 @@ Bundle 'grep.vim'
 "Bundle 'rking/ag.vim'
 
 Bundle 'osyo-manga/vim-over'
+Bundle 'LeafCage/yankround.vim'
 
 filetype plugin indent on
 
@@ -368,9 +373,37 @@ let Grep_Default_Options = '-i'
 "let Grep_Cygwin_Find = 1
 
 
+" neocomplcache用の設定
 let g:neocomplcache_enable_at_startup = 1
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 
+" neosnippet用の設定
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: "\<TAB>"
+
+" For snippet_complete marker.
+"if has('conceal')
+"  set conceallevel=2 concealcursor=i
+"endif
+
+
+" yunkround用の設定
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
 
 "===========================================================================
 "
