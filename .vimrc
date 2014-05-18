@@ -296,7 +296,7 @@ Bundle 'grep.vim'
 "Bundle 'rking/ag.vim'
 
 Bundle 'osyo-manga/vim-over'
-Bundle 'LeafCage/yankround.vim'
+"Bundle 'LeafCage/yankround.vim'
 
 filetype plugin indent on
 
@@ -398,12 +398,12 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 
 " yunkround用の設定
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
+"nmap p <Plug>(yankround-p)
+"nmap P <Plug>(yankround-P)
+"nmap gp <Plug>(yankround-gp)
+"nmap gP <Plug>(yankround-gP)
+"nmap <C-p> <Plug>(yankround-prev)
+"nmap <C-n> <Plug>(yankround-next)
 
 "===========================================================================
 "
