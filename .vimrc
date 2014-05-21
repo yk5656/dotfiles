@@ -154,7 +154,7 @@ set clipboard=unnamedplus
 " Ubuntuで全角記号がうまく表示されない問題への対策
 set ambiwidth=double
 
-
+set nowrap
 
 " キーマップ
 "
