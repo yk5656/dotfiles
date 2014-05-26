@@ -40,3 +40,5 @@ endif
 "colorscheme jellybeans
 colorscheme molokai			" Macではなぜかgvimrcにも書いておかないとおかしくなる
 
+
+set mouse=""
