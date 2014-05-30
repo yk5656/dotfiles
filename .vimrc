@@ -474,5 +474,5 @@ inoremap <C-d> <Del>
 "\    "marker_open_tree" : '▾'
 "\}
 
-Bundle 'vim-scripts/AutoComplPop'
+"Bundle 'vim-scripts/AutoComplPop'
 
