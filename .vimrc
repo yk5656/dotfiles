@@ -283,10 +283,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'surround.vim'
 Bundle 'gcmt/wildfire.vim'
 
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet.vim'
-Bundle 'Shougo/neosnippet-snippets'
-
 Bundle 'scrooloose/syntastic'
 
 Bundle 'grep.vim'
@@ -297,6 +293,9 @@ Bundle 'grep.vim'
 
 Bundle 'osyo-manga/vim-over'
 "Bundle 'LeafCage/yankround.vim'
+
+Bundle 'rhysd/clever-f.vim'
+let g:clever_f_ignore_case = 1
 
 filetype plugin indent on
 
@@ -373,16 +372,6 @@ let Grep_Default_Options = '-i'
 "let Grep_Cygwin_Find = 1
 
 
-" neocomplcache用の設定
-let g:neocomplcache_enable_at_startup = 1
-inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" neosnippet用の設定
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 " SuperTab like snippets behavior.
 "imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 "\ "\<Plug>(neosnippet_expand_or_jump)"
@@ -424,16 +413,6 @@ endif
 
 
 
-
-
-
-
-
-nnoremap J 10j
-nnoremap K 10k
-nnoremap L 10l
-nnoremap H 10h
-
 Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
 
@@ -444,4 +423,56 @@ let g:pdv_cfg_Author = ""
 let g:pdv_cfg_Copyright = ""
 let g:pdv_cfg_License = ""
 
+
+
+"Bundle 'Shougo/neocomplcache'
+""Bundle 'Shougo/neosnippet.vim'
+""Bundle 'Shougo/neosnippet-snippets'
+"
+"" neocomplcache用の設定
+"let g:acp_enableAtStartup = 0
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_max_list = 20
+"let g:neocomplcache_auto_completion_start_length = 2
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_manual_completion_start_length = 3
+"inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+
+"" neosnippet用の設定
+"" Plugin key-mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+"Emacs風にする
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-d> <Del>
+"inoremap <C-n> <Down>
+"inoremap <C-p> <Up>
+
+
+"Bundle 'joonty/vdebug'
+"
+"let g:vdebug_options= {
+"\    "port" : 9000,
+"\    "server" : '192.168.56.6',
+"\    "timeout" : 20,
+"\    "on_close" : 'detach',
+"\    "break_on_open" : 1,
+"\    "ide_key" : '',
+"\    "path_maps" : {},
+"\    "debug_window_level" : 0,
+"\    "debug_file_level" : 0,
+"\    "debug_file" : "",
+"\    "watch_window_style" : 'expanded',
+"\    "marker_default" : '⬦',
+"\    "marker_closed_tree" : '▸',
+"\    "marker_open_tree" : '▾'
+"\}
+
+Bundle 'vim-scripts/AutoComplPop'
 
