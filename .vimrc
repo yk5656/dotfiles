@@ -476,3 +476,10 @@ inoremap <C-d> <Del>
 
 "Bundle 'vim-scripts/AutoComplPop'
 
+Bundle 'nishigori/increment-activator'
+let g:increment_activator_filetype_candidates = {
+  \   '_' : [
+  \     ['月', '火', '水', '木', '金', '土', '日'],
+  \   ],
+  \ }
+
