@@ -128,7 +128,7 @@ nnoremap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
 nnoremap <silent> <C-p> :bprevious<CR>
 nnoremap <silent> <C-n> :bnext<CR>
 
-" 少しEmacx風にする
+" ちょっとだけEmacs風にする
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
@@ -212,6 +212,7 @@ vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
 "map <F11> <ESC>:set nowrap<CR>				" 折り返しをやめる
 "nnoremap <silent> <F12> :TlistToggle<CR>	" タグリスト
 
+
 "--------------------------------------
 " Vundle
 "--------------------------------------
@@ -223,24 +224,26 @@ else
   call vundle#rc()
 endif
 
-Bundle 'yk5656/vim-bquit'
 Bundle 'gmarik/vundle'
+Bundle 'yk5656/vim-bquit'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
-"Bundle 'buftabs'
-Bundle 'kien/ctrlp.vim'
-Bundle 'surround.vim'
-Bundle 'gcmt/wildfire.vim'
-
-Bundle 'scrooloose/syntastic'
-
 Bundle 'grep.vim'
+Bundle 'kien/ctrlp.vim'
+
+
+"Bundle 'buftabs'
+"Bundle 'surround.vim'
+"Bundle 'gcmt/wildfire.vim'
+
+"Bundle 'scrooloose/syntastic'
+
 "Bundle 'fuenor/qfixgrep'
 "Bundle 'QuickBuf'
 "Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'rking/ag.vim'
 
-Bundle 'osyo-manga/vim-over'
+"Bundle 'osyo-manga/vim-over'
 "Bundle 'LeafCage/yankround.vim'
 
 "Bundle 'rhysd/clever-f.vim'
@@ -274,10 +277,10 @@ let g:tlist_php_settings = 'php;f:function'
 "--------------------------------------
 " buftabs
 "--------------------------------------
-let g:buftabs_only_basename=1		" バッファタブにパスを省略してファイル名のみ表示する
-let g:buftabs_in_statusline=1		" バッファタブをステータスライン内に表示する
-let g:buftabs_active_highlight_group="Visual"	" 現在のバッファをハイライト
-set laststatus=2	" ステータスラインを常に表示
+"let g:buftabs_only_basename=1		" バッファタブにパスを省略してファイル名のみ表示する
+"let g:buftabs_in_statusline=1		" バッファタブをステータスライン内に表示する
+"let g:buftabs_active_highlight_group="Visual"	" 現在のバッファをハイライト
+"set laststatus=2	" ステータスラインを常に表示
 " ステータスライン
 "set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
 
@@ -363,15 +366,15 @@ endif
 
 
 
-Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
-nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
-
-let g:pdv_cfg_Type = "type"
-let g:pdv_cfg_Package = ""
-let g:pdv_cfg_Version = ""
-let g:pdv_cfg_Author = ""
-let g:pdv_cfg_Copyright = ""
-let g:pdv_cfg_License = ""
+"Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
+"nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
+"
+"let g:pdv_cfg_Type = "type"
+"let g:pdv_cfg_Package = ""
+"let g:pdv_cfg_Version = ""
+"let g:pdv_cfg_Author = ""
+"let g:pdv_cfg_Copyright = ""
+"let g:pdv_cfg_License = ""
 
 
 
@@ -416,12 +419,12 @@ let g:pdv_cfg_License = ""
 
 "Bundle 'vim-scripts/AutoComplPop'
 
-Bundle 'nishigori/increment-activator'
-let g:increment_activator_filetype_candidates = {
-  \   '_' : [
-  \     ['月', '火', '水', '木', '金', '土', '日'],
-  \   ],
-  \ }
+"Bundle 'nishigori/increment-activator'
+"let g:increment_activator_filetype_candidates = {
+"  \   '_' : [
+"  \     ['月', '火', '水', '木', '金', '土', '日'],
+"  \   ],
+"  \ }
 
 
 
