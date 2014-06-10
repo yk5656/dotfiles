@@ -2,15 +2,71 @@
 "
 " 基本設定
 "
-"------------------------------------------------------------------------------ 
-" vi互換をオフにして、vimのデフォルトの設定にする
-set nocompatible
+"------------------------------------------------------------------------------
+set nocompatible                " vi互換をオフにしてvimのデフォルトの設定にする
+set encoding=utf-8              " 文字コードをUTF-8にする
+let mapleader=","               " <Leader>キーを「,」にする
 
-" 文字コードをUTF-8にする
-set encoding=utf-8
+" ファイル
+set autoread                    " 他でファイルが更新された時に自動で再読み込み
+set noswapfile                  " スワップファイルを作成しない
+set nobackup                    " バックアップファイルを作成しない
 
-" <Leader>キーを「,」にする
-let mapleader = ","
+" 外観
+set title                       " タイトルを表示する
+set number                      " 行番号を表示する
+set laststatus=2                " ステータス行を常に表示する
+set showcmd                     " 入力中のコマンドを画面の右下に表示する
+set cmdheight=2                 " コマンドラインの高さを設定する
+set wildmenu                    " コマンドラインの補完を有効にする
+
+" テキスト表示
+set nowrap                      " 長い行を折り返さない
+set noshowmatch                 " 括弧入力時に対応する括弧に表示を移さない
+set list                        " 不可視文字を表示する
+set listchars=tab:>\ ,trail:_   " タブ文字「>」、行末の余分なスペース「_」
+set textwidth=0                 " 文字入力中に勝手に改行しないようにする
+
+" インデント
+set noexpandtab                 " タブをスペースに変換しない
+set ts=4 sw=4 sts=4             " タブの文字数
+set autoindent                  " 自動的にインデントする
+
+" 検索/移動
+set nowrapscan                  " 最後まで検索した後、先頭から再度検索しない
+set ignorecase                  " 小文字の場合は大文字小文字区別しないが、
+set smartcase                   " 大文字が含まれる場合は大文字小文字区別する
+set scrolloff=5                 " 画面の上下に数行余白を残してスクロールする
+set whichwrap=b,s,h,l,<,>,[,]   " カーソルが行頭・行末で止まらないようにする
+set history=100                 " 検索やコマンドの履歴の保存数
+
+" ステータスライン
+set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
+
+
+"
+" OS別設定
+"
+if has('win32')
+  " Windows用
+
+  " Kaoriya版vimの場合、デフォルトの設定ファイルvimrc_example.vimを読み込む際に
+  " textwidthが上書きされるので、その対策
+  "autocmd FileType text setlocal textwidth=0
+
+elseif has('mac')
+  " Mac用
+
+elseif has('xfontset')
+  " UNIX用
+
+  " Ubuntuで全角記号がうまく表示されない問題への対策
+  "set ambiwidth=double
+
+  "set clipboard=unnamedplus           " クリップボード連携
+  " unnamedではなくunnamedplusじゃないとUbuntuでクリップボードに保存されなかっ
+
+endif
 
 
 "
@@ -35,125 +91,8 @@ autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none 
 augroup END
 
 
-"
-" ファイル
-"
-
-" 他でファイルが更新された場合に自動で再読み込みする
-set autoread
-
-" スワップファイルを作成しない
-set noswapfile
-
-" バックアップファイルを作成しない
-set nobackup
 
 
-"
-" 外観
-"
-
-" タイトルを表示する
-set title
-
-" 行番号を表示する
-set number
-
-" ステータス行を常に表示する
-set laststatus=2
-
-" カーソルが何行目の何列目に置かれているかを表示する
-"set ruler			" 設定しなくても表示されてる？
-
-" 入力中のコマンドを画面の右下に表示する
-set showcmd
-
-" コマンドラインの高さを設定する
-set cmdheight=2
-
-" コマンドラインの補完を有効にする
-set wildmenu
-
-" ステータスラインの表示内容
-set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P 
-
-
-"
-" テキスト表示
-"
-" 長い行は折り返して表示する
-set wrap
-
-" 括弧入力時に対応する括弧に表示が移らないようにする
-set noshowmatch
-
-" タブ文字「>」、行末「$」、行末の余分なスペース「_」、で表示する
-set list
-set listchars=tab:>\ ,eol:$,trail:_
-
-" 文字入力中に勝手に改行しないようにする
-set textwidth=0
-" Kaoriya版vimの場合、デフォルトの設定ファイルvimrc_example.vimを読み込む際に
-" textwidthが上書きされるので、その対策
-autocmd FileType text setlocal textwidth=0
-
-
-"
-" インデント
-"
-
-" タブをスペースに変換しない
-set noexpandtab
-
-" タブの文字数
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-
-" 自動的にインデントする
-set autoindent
-
-
-"
-" 検索/移動
-"
-
-" 最後まで検索した後、先頭から再度検索しない
-set nowrapscan
-
-" 小文字の場合は大文字小文字区別しないが、
-set ignorecase
-" 大文字が含まれる場合は大文字小文字区別する
-set smartcase
-
-" 画面の上下に数行余白を残してスクロールする
-set scrolloff=5
-
-" カーソルが行頭・行末で止まらないようにする
-set whichwrap=b,s,h,l,<,>,[,]
-
-" 検索やコマンドの履歴の保存数
-set history=100
-
-
-"
-" その他
-"
-
-" クリップボード連携
-"  unnamedではなくunnamedplusじゃないとUbuntuでクリップボードに保存されなかっ
-set clipboard=unnamedplus
-
-" テキスト挿入中の自動折り返しを日本語に対応させる
-"set formatoptions+=mM
-
-" BSでインデントや改行を削除できるようにする
-"set backspace=indent,eol,start
-
-" Ubuntuで全角記号がうまく表示されない問題への対策
-set ambiwidth=double
-
-set nowrap
 
 " キーマップ
 "
@@ -242,7 +181,7 @@ nnoremap <silent> <leader>L :TlistOpen<CR>
 nnoremap <silent> <leader>p :CtrlP<CR>
 nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+nnoremap <silent> <leader>, :CtrlPMRUFiles<CR>
 nnoremap <silent> <leader>g :Rgrep<CR>
 "nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
 
@@ -337,7 +276,8 @@ set laststatus=2	" ステータスラインを常に表示
 "--------------------------------------
 let g:ctrlp_map						= ''
 let g:ctrlp_working_path_mode		= 0
-"let g:ctrlp_by_filename				= 1
+let g:ctrlp_jump_to_buffer			= 2
+let g:ctrlp_by_filename				= 1
 let g:ctrlp_max_height				= 20
 let g:ctrlp_extensions				= ['tag']
 let g:ctrlp_match_window_reversed	= 0
