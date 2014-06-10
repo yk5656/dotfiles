@@ -9,8 +9,7 @@ let mapleader=","               " <Leader>キーを「,」にする
 
 " ファイル
 set autoread                    " 他でファイルが更新された時に自動で再読み込み
-set noswapfile                  " スワップファイルを作成しない
-set nobackup                    " バックアップファイルを作成しない
+set noswapfile                  " スワップファイルを作成しない set nobackup                    " バックアップファイルを作成しない
 
 " 外観
 set title                       " タイトルを表示する
@@ -45,9 +44,9 @@ set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\
 
 
 "
-" OS別設定
+" OS別設定（トラブルシューティング）
 "
-if has('win32')
+if has("win32") || has("win64")
   " Windows用
 
   " Kaoriya版vimの場合、デフォルトの設定ファイルvimrc_example.vimを読み込む際に
@@ -57,14 +56,14 @@ if has('win32')
 elseif has('mac')
   " Mac用
 
-elseif has('xfontset')
+elseif has('unix')
   " UNIX用
 
   " Ubuntuで全角記号がうまく表示されない問題への対策
-  "set ambiwidth=double
+  set ambiwidth=double
 
-  "set clipboard=unnamedplus           " クリップボード連携
-  " unnamedではなくunnamedplusじゃないとUbuntuでクリップボードに保存されなかっ
+  " Ubuntuでは、unnamedではなくunnamedplusじゃないとクリップボードに保存されなかった
+  set clipboard=unnamedplus
 
 endif
 
@@ -82,14 +81,12 @@ colorscheme molokai
 "colorscheme hybrid
 
 " ステータスラインのカラーの設定（挿入モード時に色を変える）
-"highlig statuslin term=NONE cterm=NONE guifg=black ctermfg=black ctermbg=6
 highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
 augroup InsertHook
 autocmd!
 autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 gui=none cterm=none ctermfg=black ctermbg=3
 autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
 augroup END
-
 
 
 
@@ -109,30 +106,43 @@ augroup END
 noremap j gj
 noremap k gk
 
-" ctrl+j/k/h/lでウィンドウを移動
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-h> <C-w>h
-nmap <C-l> <C-w>l
+" Ctrl+jでESC
+inoremap <silent> <C-j> <esc>
 
 " Yでカーソル位置から行末までコピー
 nnoremap Y y$
 
+" ctrl+j/k/h/lでウィンドウを移動
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+
 " Escの2回押しでハイライト消去
 set hlsearch
-nmap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
+nnoremap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
 
 " Ctrl+nで次のバッファを表示、Ctrl+Pで前のバッファを表示
 nnoremap <silent> <C-p> :bprevious<CR>
 nnoremap <silent> <C-n> :bnext<CR>
 
-" Ctrl+jでESC
-inoremap <silent> <C-j> <esc>
-
-" コマンドラインをEmacs風にする
+" 少しEmacx風にする
 cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
+cnoremap <C-d> <Del>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-d> <Del>
+"inoremap <C-n> <Down>
+"inoremap <C-p> <Up>
+
+
+
 
 " .vimrc/.gvimrcの編集/反映
 nnoremap <silent> <leader>ev :<C-u>edit $MYVIMRC<CR>
@@ -216,7 +226,7 @@ Bundle 'yk5656/vim-bquit'
 Bundle 'gmarik/vundle'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
-Bundle 'buftabs'
+"Bundle 'buftabs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'surround.vim'
 Bundle 'gcmt/wildfire.vim'
@@ -383,16 +393,6 @@ let g:pdv_cfg_License = ""
 "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-"Emacs風にする
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-d> <Del>
-"inoremap <C-n> <Down>
-"inoremap <C-p> <Up>
-
 
 "Bundle 'joonty/vdebug'
 "
