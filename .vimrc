@@ -2,8 +2,7 @@
 "
 " 基本設定
 "
-"------------------------------------------------------------------------------
-
+"------------------------------------------------------------------------------ 
 " vi互換をオフにして、vimのデフォルトの設定にする
 set nocompatible
 
@@ -294,8 +293,8 @@ Bundle 'grep.vim'
 Bundle 'osyo-manga/vim-over'
 "Bundle 'LeafCage/yankround.vim'
 
-Bundle 'rhysd/clever-f.vim'
-let g:clever_f_ignore_case = 1
+"Bundle 'rhysd/clever-f.vim'
+"let g:clever_f_ignore_case = 1
 
 filetype plugin indent on
 
@@ -483,3 +482,4 @@ let g:increment_activator_filetype_candidates = {
   \   ],
   \ }
 
+"14/6/9 描画がおかしくなるので、'nishigori/increment-activator'をコメントアウト
