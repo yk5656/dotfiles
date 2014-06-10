@@ -9,7 +9,8 @@ let mapleader=","               " <Leader>キーを「,」にする
 
 " ファイル
 set autoread                    " 他でファイルが更新された時に自動で再読み込み
-set noswapfile                  " スワップファイルを作成しない set nobackup                    " バックアップファイルを作成しない
+set noswapfile                  " スワップファイルを作成しない
+set nobackup                    " バックアップファイルを作成しない
 
 " 外観
 set title                       " タイトルを表示する
