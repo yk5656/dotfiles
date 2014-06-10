@@ -337,7 +337,7 @@ set laststatus=2	" ステータスラインを常に表示
 "--------------------------------------
 let g:ctrlp_map						= ''
 let g:ctrlp_working_path_mode		= 0
-let g:ctrlp_by_filename				= 1
+"let g:ctrlp_by_filename				= 1
 let g:ctrlp_max_height				= 20
 let g:ctrlp_extensions				= ['tag']
 let g:ctrlp_match_window_reversed	= 0
@@ -482,4 +482,10 @@ let g:increment_activator_filetype_candidates = {
   \   ],
   \ }
 
-"14/6/9 描画がおかしくなるので、'nishigori/increment-activator'をコメントアウト
+
+
+"Bundle 'Shougo/unite.vim'
+"let g:unite_enable_start_insert=1
+
+
+
