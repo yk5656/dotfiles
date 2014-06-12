@@ -174,48 +174,12 @@ autocmd FileType eruby setlocal sw=2 sts=2 ts=2 et
 " プラグイン
 "
 "------------------------------------------------------------------------------
-filetype off
-
-" tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]> 
-
-" ctags生成
-nnoremap <leader>c :!ctags -R<CR>
-
-" プラグイン関連
-nnoremap :q<CR> :Bquit<CR>
-nnoremap <silent> <leader>t :NERDTreeToggle<CR>
-nnoremap <silent> <leader>T :NERDTreeFind<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR>
-nnoremap <silent> <leader>l :TlistToggle<CR>
-nnoremap <silent> <leader>L :TlistOpen<CR>
-nnoremap <silent> <leader>p :CtrlP<CR>
-nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
-nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <leader>, :CtrlPMRUFiles<CR>
-nnoremap <silent> <leader>g :Rgrep<CR>
-"nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
-
-" vim-over
-nnoremap <silent> <Leader>r :OverCommandLine<CR>%s/
-vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
-
-" ファンクションキー割り当て
-" ヘルプ
-"nnoremap <F1> K
-" 再帰Grep
-"nnoremap <silent> <F3> :Rgrep<CR>
-" 前回の検索結果
-"nnoremap <silent> <F4> :ToggleQFixWin<CR>
-"map <F6> <ESC>:TMiniBufExplorer<CR>		" タブ表示切替
-"nnoremap <F8> :source %<CR>				" vimrcを再読み込み
-"map <F11> <ESC>:set nowrap<CR>				" 折り返しをやめる
-"nnoremap <silent> <F12> :TlistToggle<CR>	" タグリスト
-
 
 "--------------------------------------
 " Vundle
 "--------------------------------------
+filetype off
+
 if has("win32") || has("win64")
   set rtp+=~/vimfiles/vundle/
   call vundle#rc('~/vimfiles/bundle/')
@@ -225,31 +189,53 @@ else
 endif
 
 Bundle 'gmarik/vundle'
-Bundle 'yk5656/vim-bquit'
+Bundle 'grep.vim'
 Bundle 'The-NERD-tree'
 Bundle 'taglist.vim'
-Bundle 'grep.vim'
 Bundle 'kien/ctrlp.vim'
 
+Bundle 'nishigori/increment-activator'
+Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'Shougo/neocomplcache'
+Bundle 'rhysd/clever-f.vim'
+
+Bundle 'yk5656/vim-bquit'
 
 "Bundle 'buftabs'
 "Bundle 'surround.vim'
 "Bundle 'gcmt/wildfire.vim'
-
-"Bundle 'scrooloose/syntastic'
-
 "Bundle 'fuenor/qfixgrep'
 "Bundle 'QuickBuf'
 "Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'rking/ag.vim'
-
 "Bundle 'osyo-manga/vim-over'
 "Bundle 'LeafCage/yankround.vim'
-
-"Bundle 'rhysd/clever-f.vim'
 "let g:clever_f_ignore_case = 1
 
 filetype plugin indent on
+
+
+"--------------------------------------
+" grep
+"--------------------------------------
+let Grep_Default_Filelist = '*.txt *.html *.css *.js *.php *.ctp'
+let Grep_Skip_Dirs = '.svn .git'
+let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
+let Grep_Default_Options = '-i'
+"let QFix_Height = 40
+"let QFix_PreviewEnable = 0
+""let Grep_Path = 'c:/cygwin/bin/grep.exe'
+"let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
+"let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
+""let Grep_Path = 'c:/GnuWin32/bin/grep.exe'
+""let Grep_Find_Path = 'c:/GnuWin32/bin/find.exe'
+""let Grep_Xargs_Path = 'c:/GnuWin32/bin/xargs.exe'
+""let Grep_Default_Filelist = '*.cgi, *.css, *.ctp, *.htm, *.html, *.java, *.js, *.php, *.sql, *.xml'
+"let Grep_Find_Use_Xargs = 0
+""let Grep_Cygwin_Find = 1 
+"let Grep_Shell_Quote_Char = '"'
+"let Grep_Cygwin_Find = 1
 
 
 "--------------------------------------
@@ -275,17 +261,6 @@ let g:tlist_php_settings = 'php;f:function'
 
 
 "--------------------------------------
-" buftabs
-"--------------------------------------
-"let g:buftabs_only_basename=1		" バッファタブにパスを省略してファイル名のみ表示する
-"let g:buftabs_in_statusline=1		" バッファタブをステータスライン内に表示する
-"let g:buftabs_active_highlight_group="Visual"	" 現在のバッファをハイライト
-"set laststatus=2	" ステータスラインを常に表示
-" ステータスライン
-"set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
-
-
-"--------------------------------------
 " CtrlP
 "--------------------------------------
 let g:ctrlp_map						= ''
@@ -304,25 +279,56 @@ let g:ctrlp_prompt_mappings = {
 
 
 "--------------------------------------
-" grep
+" increment-activator
 "--------------------------------------
-let Grep_Default_Filelist = '*.txt *.html *.css *.js *.php *.ctp'
-let Grep_Skip_Dirs = '.svn .git'
-let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
-let Grep_Default_Options = '-i'
-"let QFix_Height = 40
-"let QFix_PreviewEnable = 0
-""let Grep_Path = 'c:/cygwin/bin/grep.exe'
-"let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
-"let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
-""let Grep_Path = 'c:/GnuWin32/bin/grep.exe'
-""let Grep_Find_Path = 'c:/GnuWin32/bin/find.exe'
-""let Grep_Xargs_Path = 'c:/GnuWin32/bin/xargs.exe'
-""let Grep_Default_Filelist = '*.cgi, *.css, *.ctp, *.htm, *.html, *.java, *.js, *.php, *.sql, *.xml'
-"let Grep_Find_Use_Xargs = 0
-""let Grep_Cygwin_Find = 1 
-"let Grep_Shell_Quote_Char = '"'
-"let Grep_Cygwin_Find = 1
+let g:increment_activator_filetype_candidates = {
+  \   '_' : [
+  \     ['月', '火', '水', '木', '金', '土', '日'],
+  \   ],
+  \ }
+
+
+"--------------------------------------
+" syntastic
+"--------------------------------------
+
+
+"--------------------------------------
+" PDV--phpDocumentor-for-Vim
+"--------------------------------------
+let g:pdv_cfg_Type = "type"
+let g:pdv_cfg_Package = ""
+let g:pdv_cfg_Version = ""
+let g:pdv_cfg_Author = ""
+let g:pdv_cfg_Copyright = ""
+let g:pdv_cfg_License = ""
+
+
+"--------------------------------------
+" clever-f.vim
+"--------------------------------------
+
+
+"--------------------------------------
+" neocomplcache
+"--------------------------------------
+let g:acp_enableAtStartup = 0
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_max_list = 20
+let g:neocomplcache_auto_completion_start_length = 2
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_manual_completion_start_length = 3
+inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+
+""Bundle 'Shougo/neosnippet.vim'
+""Bundle 'Shougo/neosnippet-snippets'
+"
+"" neosnippet用の設定
+"" Plugin key-mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 
 " SuperTab like snippets behavior.
@@ -347,59 +353,8 @@ let Grep_Default_Options = '-i'
 "nmap <C-p> <Plug>(yankround-prev)
 "nmap <C-n> <Plug>(yankround-next)
 
-"===========================================================================
-"
-" その他
-"
-"===========================================================================
-
-" 独自シンタックスの設定
-"au BufNewFile,BufRead *.txt setf mine	"setfだと反映されない
-au BufNewFile,BufRead *.txt set filetype=mine
-
-
-" ローカルのvimrcを読み込む
-if filereadable(expand('~/.vimrc.local'))
-  source ~/.vimrc.local
-endif
-
-
-
-
-"Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
-"nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
-"
-"let g:pdv_cfg_Type = "type"
-"let g:pdv_cfg_Package = ""
-"let g:pdv_cfg_Version = ""
-"let g:pdv_cfg_Author = ""
-"let g:pdv_cfg_Copyright = ""
-"let g:pdv_cfg_License = ""
-
-
-
-"Bundle 'Shougo/neocomplcache'
-""Bundle 'Shougo/neosnippet.vim'
-""Bundle 'Shougo/neosnippet-snippets'
-"
-"" neocomplcache用の設定
-"let g:acp_enableAtStartup = 0
-"let g:neocomplcache_enable_at_startup = 1
-"let g:neocomplcache_enable_smart_case = 1
-"let g:neocomplcache_max_list = 20
-"let g:neocomplcache_auto_completion_start_length = 2
-"let g:neocomplcache_enable_smart_case = 1
-"let g:neocomplcache_manual_completion_start_length = 3
-"inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
-
-"" neosnippet用の設定
-"" Plugin key-mappings.
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 "Bundle 'joonty/vdebug'
-"
 "let g:vdebug_options= {
 "\    "port" : 9000,
 "\    "server" : '192.168.56.6',
@@ -419,17 +374,77 @@ endif
 
 "Bundle 'vim-scripts/AutoComplPop'
 
-"Bundle 'nishigori/increment-activator'
-"let g:increment_activator_filetype_candidates = {
-"  \   '_' : [
-"  \     ['月', '火', '水', '木', '金', '土', '日'],
-"  \   ],
-"  \ }
 
+"--------------------------------------
+" buftabs
+"--------------------------------------
+"let g:buftabs_only_basename=1		" バッファタブにパスを省略してファイル名のみ表示する
+"let g:buftabs_in_statusline=1		" バッファタブをステータスライン内に表示する
+"let g:buftabs_active_highlight_group="Visual"	" 現在のバッファをハイライト
+"set laststatus=2	" ステータスラインを常に表示
+" ステータスライン
+"set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
 
 
 "Bundle 'Shougo/unite.vim'
 "let g:unite_enable_start_insert=1
 
 "
+
+" tagsジャンプの時に複数ある時は一覧表示
+nnoremap <C-]> g<C-]>
+
+" ctags生成
+nnoremap <silent> <leader>c :!ctags -R<CR>
+
+" プラグイン関連
+nnoremap :q<CR> :Bquit<CR>
+nnoremap <silent> <leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <leader>T :NERDTreeFind<CR>
+nnoremap <silent> <leader>f :NERDTreeFind<CR>
+nnoremap <silent> <leader>l :TlistToggle<CR>
+nnoremap <silent> <leader>L :TlistOpen<CR>
+nnoremap <silent> <leader>p :CtrlP<CR>
+nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
+nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>, :CtrlPMRUFiles<CR>
+nnoremap <silent> <leader>g :Rgrep<CR>
+nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
+"nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
+
+" vim-over
+nnoremap <silent> <Leader>r :OverCommandLine<CR>%s/
+vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
+
+" ファンクションキー割り当て
+" ヘルプ
+"nnoremap <F1> K
+" 再帰Grep
+"nnoremap <silent> <F3> :Rgrep<CR>
+" 前回の検索結果
+"nnoremap <silent> <F4> :ToggleQFixWin<CR>
+"map <F6> <ESC>:TMiniBufExplorer<CR>		" タブ表示切替
+"nnoremap <F8> :source %<CR>				" vimrcを再読み込み
+"map <F11> <ESC>:set nowrap<CR>				" 折り返しをやめる
+"nnoremap <silent> <F12> :TlistToggle<CR>	" タグリスト
+
+
+"===========================================================================
+"
+" その他
+"
+"===========================================================================
+
+" 独自シンタックスの設定
+"au BufNewFile,BufRead *.txt setf mine	"setfだと反映されない
+au BufNewFile,BufRead *.txt set filetype=mine
+
+
+" ローカルのvimrcを読み込む
+if filereadable(expand('~/.vimrc.local'))
+  source ~/.vimrc.local
+endif
+
+
+
 
