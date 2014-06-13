@@ -119,7 +119,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-
 " Escの2回押しでハイライト消去
 set hlsearch
 nnoremap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
@@ -446,5 +445,11 @@ if filereadable(expand('~/.vimrc.local'))
 endif
 
 
+
+
+Bundle 'kana/vim-operator-user'
+Bundle 'kana/vim-operator-replace'
+
+map R  <Plug>(operator-replace)
 
 
