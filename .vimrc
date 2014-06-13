@@ -23,8 +23,6 @@ set wildmenu                    " コマンドラインの補完を有効にす�
 " テキスト表示
 set nowrap                      " 長い行を折り返さない
 set noshowmatch                 " 括弧入力時に対応する括弧に表示を移さない
-set list                        " 不可視文字を表示する
-set listchars=tab:>\ ,trail:_   " タブ文字「>」、行末の余分なスペース「_」
 set textwidth=0                 " 文字入力中に勝手に改行しないようにする
 
 " インデント
@@ -41,48 +39,20 @@ set whichwrap=b,s,h,l,<,>,[,]   " カーソルが行頭・行末で止まらな�
 set history=100                 " 検索やコマンドの履歴の保存数
 set gdefault                    " 置換でgをデフォルトにする
 
-" ステータスライン
-set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
-
-
-"
-" OS別設定（トラブルシューティング）
-"
-if has("win32") || has("win64")
-  " Windows用
-
-  " Kaoriya版vimの場合、デフォルトの設定ファイルvimrc_example.vimを読み込む際に
-  " textwidthが上書きされるので、その対策
-  "autocmd FileType text setlocal textwidth=0
-
-elseif has('mac')
-  " Mac用
-
-elseif has('unix')
-  " UNIX用
-
-  " Ubuntuで全角記号がうまく表示されない問題への対策
-  set ambiwidth=double
-
-  " Ubuntuでは、unnamedではなくunnamedplusじゃないとクリップボードに保存されなかった
-  set clipboard=unnamedplus
-
-endif
-
-
-"
-" カラー
-"
+" 不可視文字
+set list
+set listchars=tab:▸\ ,trail:･,eol:↲,extends:»,precedes:«
 
 " シンタックスのカラー表示を有効にする
-syntax on
+syntax enable
 
 " カラースキーマ
 colorscheme molokai
 "colorscheme jellybeans
 "colorscheme hybrid
 
-" ステータスラインのカラーの設定（挿入モード時に色を変える）
+" ステータスライン
+set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
 highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
 augroup InsertHook
 autocmd!
@@ -92,7 +62,7 @@ augroup END
 
 
 
-
+"
 " キーマップ
 "
 "  コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
@@ -391,7 +361,35 @@ endif
 
 
 
+"===========================================================================
+"
+" 環境別設定
+"
+"===========================================================================
+if has("win32") || has("win64")
+  " Windows用
 
+elseif has('mac')
+  " Mac用
+
+elseif has('unix')
+  " UNIX用
+
+  " Ubuntuで全角記号がうまく表示されない問題への対策
+  set ambiwidth=double
+
+  " Ubuntuでは、unnamedではなくunnamedplusじゃないとクリップボードに保存されなかった
+  set clipboard=unnamedplus
+
+endif
+
+if has("kaoriya")
+
+  " Kaoriya版vimの場合、デフォルトの設定ファイルvimrc_example.vimを読み込む際に
+  " textwidthが上書きされるので、その対策
+  autocmd FileType text setlocal textwidth=0
+
+endif
 
 
 
