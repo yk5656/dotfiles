@@ -39,6 +39,7 @@ set smartcase                   " 大文字が含まれる場合は大文字小�
 set scrolloff=5                 " 画面の上下に数行余白を残してスクロールする
 set whichwrap=b,s,h,l,<,>,[,]   " カーソルが行頭・行末で止まらないようにする
 set history=100                 " 検索やコマンドの履歴の保存数
+set gdefault                    " 置換でgをデフォルトにする
 
 " ステータスライン
 set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
@@ -128,16 +129,12 @@ nnoremap <silent> <C-p> :bprevious<CR>
 nnoremap <silent> <C-n> :bnext<CR>
 
 " ちょっとだけEmacs風にする
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
-cnoremap <C-d> <Del>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-d> <Del>
+noremap! <C-a> <Home>
+noremap! <C-e> <End>
+noremap! <C-b> <Left>
+noremap! <C-f> <Right>
+noremap! <C-d> <Del>
+noremap! <C-y> <C-r>+
 "inoremap <C-n> <Down>
 "inoremap <C-p> <Up>
 
@@ -199,16 +196,18 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Shougo/neocomplcache'
 Bundle 'rhysd/clever-f.vim'
 
+Bundle 'kana/vim-operator-user'
+Bundle 'kana/vim-operator-replace'
+Bundle 'surround.vim'
+Bundle 'osyo-manga/vim-over'
+
 Bundle 'yk5656/vim-bquit'
 
-"Bundle 'buftabs'
-"Bundle 'surround.vim'
 "Bundle 'gcmt/wildfire.vim'
 "Bundle 'fuenor/qfixgrep'
 "Bundle 'QuickBuf'
 "Bundle 'terryma/vim-multiple-cursors'
 "Bundle 'rking/ag.vim'
-"Bundle 'osyo-manga/vim-over'
 "Bundle 'LeafCage/yankround.vim'
 "let g:clever_f_ignore_case = 1
 
@@ -224,17 +223,6 @@ let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
 let Grep_Default_Options = '-i'
 "let QFix_Height = 40
 "let QFix_PreviewEnable = 0
-""let Grep_Path = 'c:/cygwin/bin/grep.exe'
-"let Grep_Find_Path = 'c:/cygwin/bin/find.exe'
-"let Grep_Xargs_Path = 'c:/cygwin/bin/xargs.exe'
-""let Grep_Path = 'c:/GnuWin32/bin/grep.exe'
-""let Grep_Find_Path = 'c:/GnuWin32/bin/find.exe'
-""let Grep_Xargs_Path = 'c:/GnuWin32/bin/xargs.exe'
-""let Grep_Default_Filelist = '*.cgi, *.css, *.ctp, *.htm, *.html, *.java, *.js, *.php, *.sql, *.xml'
-"let Grep_Find_Use_Xargs = 0
-""let Grep_Cygwin_Find = 1 
-"let Grep_Shell_Quote_Char = '"'
-"let Grep_Cygwin_Find = 1
 
 
 "--------------------------------------
@@ -304,7 +292,7 @@ let g:pdv_cfg_License = ""
 
 
 "--------------------------------------
-" clever-f.vim
+" clever-f
 "--------------------------------------
 
 
@@ -320,75 +308,32 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_manual_completion_start_length = 3
 inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 
-""Bundle 'Shougo/neosnippet.vim'
-""Bundle 'Shougo/neosnippet-snippets'
-"
-"" neosnippet用の設定
-"" Plugin key-mappings.
-"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-"xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)"
-"\: pumvisible() ? "\<C-n>" : "\<TAB>"
-"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"\ "\<Plug>(neosnippet_expand_or_jump)"
-"\: "\<TAB>"
-
-" For snippet_complete marker.
-"if has('conceal')
-"  set conceallevel=2 concealcursor=i
-"endif
-
-
-" yunkround用の設定
-"nmap p <Plug>(yankround-p)
-"nmap P <Plug>(yankround-P)
-"nmap gp <Plug>(yankround-gp)
-"nmap gP <Plug>(yankround-gP)
-"nmap <C-p> <Plug>(yankround-prev)
-"nmap <C-n> <Plug>(yankround-next)
-
-
-"Bundle 'joonty/vdebug'
-"let g:vdebug_options= {
-"\    "port" : 9000,
-"\    "server" : '192.168.56.6',
-"\    "timeout" : 20,
-"\    "on_close" : 'detach',
-"\    "break_on_open" : 1,
-"\    "ide_key" : '',
-"\    "path_maps" : {},
-"\    "debug_window_level" : 0,
-"\    "debug_file_level" : 0,
-"\    "debug_file" : "",
-"\    "watch_window_style" : 'expanded',
-"\    "marker_default" : '⬦',
-"\    "marker_closed_tree" : '▸',
-"\    "marker_open_tree" : '▾'
-"\}
-
-"Bundle 'vim-scripts/AutoComplPop'
+"--------------------------------------
+" vim-operator-user
+" vim-operator-replace
+"--------------------------------------
 
 
 "--------------------------------------
-" buftabs
+" surround
 "--------------------------------------
-"let g:buftabs_only_basename=1		" バッファタブにパスを省略してファイル名のみ表示する
-"let g:buftabs_in_statusline=1		" バッファタブをステータスライン内に表示する
-"let g:buftabs_active_highlight_group="Visual"	" 現在のバッファをハイライト
-"set laststatus=2	" ステータスラインを常に表示
-" ステータスライン
-"set statusline=%=\ [%{(&fenc!=''?&fenc:&enc)}/%{&ff}]\[%Y]\[%04l,%04v][%p%%]
 
 
-"Bundle 'Shougo/unite.vim'
-"let g:unite_enable_start_insert=1
+"--------------------------------------
+" vim-over
+"--------------------------------------
 
-"
+
+
+
+
+
+
+
+
+" vim-operator-replace
+map R  <Plug>(operator-replace)
 
 " tagsジャンプの時に複数ある時は一覧表示
 nnoremap <C-]> g<C-]>
@@ -447,9 +392,6 @@ endif
 
 
 
-Bundle 'kana/vim-operator-user'
-Bundle 'kana/vim-operator-replace'
 
-map R  <Plug>(operator-replace)
 
 
