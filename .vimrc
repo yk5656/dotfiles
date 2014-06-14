@@ -41,8 +41,8 @@ set gdefault                    " 置換でgをデフォルトにする
 
 " 不可視文字
 set list
-set listchars=tab:▸\ ,trail:･,eol:↲,extends:»,precedes:«
-
+set listchars=tab:￫\ ,trail:･,eol:↲,extends:»,precedes:«
+	
 " シンタックスのカラー表示を有効にする
 syntax enable
 
