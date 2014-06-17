@@ -163,8 +163,8 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'nishigori/increment-activator'
 Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'Shougo/neocomplcache'
 Bundle 'rhysd/clever-f.vim'
+"Bundle 'Shougo/neocomplcache'	"日本語入力中にIMEがおかしくなるので一旦無効
 
 Bundle 'kana/vim-operator-user'
 Bundle 'kana/vim-operator-replace'
@@ -269,14 +269,14 @@ let g:pdv_cfg_License = ""
 "--------------------------------------
 " neocomplcache
 "--------------------------------------
-let g:acp_enableAtStartup = 0
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_max_list = 20
-let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_manual_completion_start_length = 3
-inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+"let g:acp_enableAtStartup = 0
+"let g:neocomplcache_enable_at_startup = 1
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_max_list = 20
+"let g:neocomplcache_auto_completion_start_length = 2
+"let g:neocomplcache_enable_smart_case = 1
+"let g:neocomplcache_manual_completion_start_length = 3
+"inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
 "--------------------------------------
@@ -390,6 +390,12 @@ if has("kaoriya")
   autocmd FileType text setlocal textwidth=0
 
 endif
+
+
+
+
+
+
 
 
 
