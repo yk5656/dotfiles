@@ -131,7 +131,7 @@ autocmd FileType ruby  setlocal sw=2 sts=2 ts=2 et
 autocmd FileType eruby setlocal sw=2 sts=2 ts=2 et
 "autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
 "autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
-"autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
+autocmd FileType html  setlocal sw=2 sts=2 ts=2 et
 
 
 
@@ -170,8 +170,7 @@ Bundle 'kana/vim-operator-user'
 Bundle 'kana/vim-operator-replace'
 Bundle 'surround.vim'
 Bundle 'osyo-manga/vim-over'
-
-Bundle 'yk5656/vim-bquit'
+Bundle 'rbgrouleff/bclose.vim'
 
 "Bundle 'gcmt/wildfire.vim'
 "Bundle 'fuenor/qfixgrep'
@@ -312,7 +311,7 @@ nnoremap <C-]> g<C-]>
 nnoremap <silent> <leader>c :!ctags -R<CR>
 
 " プラグイン関連
-nnoremap :q<CR> :Bquit<CR>
+nnoremap :q<CR> :Bclose<CR>
 nnoremap <silent> <leader>t :NERDTreeToggle<CR>
 nnoremap <silent> <leader>T :NERDTreeFind<CR>
 nnoremap <silent> <leader>f :NERDTreeFind<CR>
