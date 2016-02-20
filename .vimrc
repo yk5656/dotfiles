@@ -51,14 +51,14 @@ colorscheme molokai
 "colorscheme jellybeans
 "colorscheme hybrid
 
-" ステータスライン
-set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
-highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
-augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 gui=none cterm=none ctermfg=black ctermbg=3
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
-augroup END
+"" ステータスライン
+"set statusline=%<[%n]%F%=\ %m%r%h%w%y%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %l,%c\ %P
+"highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
+"augroup InsertHook
+"autocmd!
+"autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340 gui=none cterm=none ctermfg=black ctermbg=3
+"autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90 gui=none cterm=none ctermfg=black ctermbg=6
+"augroup END
 
 
 
@@ -98,15 +98,15 @@ nnoremap <Esc><Esc> :nohlsearch<CR>:ccl<CR><Esc>
 nnoremap <silent> <C-p> :bprevious<CR>
 nnoremap <silent> <C-n> :bnext<CR>
 
-" ちょっとだけEmacs風にする
-noremap! <C-a> <Home>
-noremap! <C-e> <End>
-noremap! <C-b> <Left>
-noremap! <C-f> <Right>
-noremap! <C-d> <Del>
-noremap! <C-y> <C-r>+
-"inoremap <C-n> <Down>
-"inoremap <C-p> <Up>
+"" ちょっとだけEmacs風にする
+"noremap! <C-a> <Home>
+"noremap! <C-e> <End>
+"noremap! <C-b> <Left>
+"noremap! <C-f> <Right>
+"noremap! <C-d> <Del>
+"noremap! <C-y> <C-r>+
+""inoremap <C-n> <Down>
+""inoremap <C-p> <Up>
 
 
 
@@ -127,11 +127,12 @@ endif
 "
 "filetype plugin on
 "filetype indent on
-autocmd FileType ruby  setlocal sw=2 sts=2 ts=2 et
-autocmd FileType eruby setlocal sw=2 sts=2 ts=2 et
+autocmd FileType ruby      setlocal sw=2 sts=2 ts=2 et
+autocmd FileType eruby     setlocal sw=2 sts=2 ts=2 et
 "autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
 "autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
-autocmd FileType html  setlocal sw=2 sts=2 ts=2 et
+autocmd FileType html      setlocal sw=2 sts=2 ts=2 et
+autocmd FileType markdown  setlocal sw=2 sts=2 ts=2 et
 
 
 
@@ -155,93 +156,85 @@ else
 endif
 
 Bundle 'gmarik/vundle'
-Bundle 'grep.vim'
-Bundle 'The-NERD-tree'
-Bundle 'taglist.vim'
-Bundle 'kien/ctrlp.vim'
+"Bundle 'grep.vim'
+"Bundle 'The-NERD-tree'
+"Bundle 'taglist.vim'
+"Bundle 'kien/ctrlp.vim'
 
-Bundle 'nishigori/increment-activator'
-Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'rhysd/clever-f.vim'
-"Bundle 'Shougo/neocomplcache'	"日本語入力中にIMEがおかしくなるので一旦無効
+"Bundle 'nishigori/increment-activator'
+"Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
+"Bundle 'scrooloose/syntastic'
+"Bundle 'rhysd/clever-f.vim'
 
-Bundle 'kana/vim-operator-user'
-Bundle 'kana/vim-operator-replace'
-Bundle 'surround.vim'
-Bundle 'osyo-manga/vim-over'
-Bundle 'rbgrouleff/bclose.vim'
+"Bundle 'kana/vim-operator-user'
+"Bundle 'kana/vim-operator-replace'
+"Bundle 'surround.vim'
+"Bundle 'osyo-manga/vim-over'
+"Bundle 'rbgrouleff/bclose.vim'
 
-"Bundle 'gcmt/wildfire.vim'
-"Bundle 'fuenor/qfixgrep'
-"Bundle 'QuickBuf'
-"Bundle 'terryma/vim-multiple-cursors'
-"Bundle 'rking/ag.vim'
-"Bundle 'LeafCage/yankround.vim'
-"let g:clever_f_ignore_case = 1
 
 filetype plugin indent on
 
 
-"--------------------------------------
-" grep
-"--------------------------------------
-let Grep_Default_Filelist = '*.txt *.html *.css *.js *.php *.ctp'
-let Grep_Skip_Dirs = '.svn .git'
-let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
-let Grep_Default_Options = '-i'
-"let QFix_Height = 40
-"let QFix_PreviewEnable = 0
+""--------------------------------------
+"" grep
+""--------------------------------------
+"let Grep_Default_Filelist = '*.txt *.html *.css *.js *.php *.ctp'
+"let Grep_Skip_Dirs = '.svn .git'
+"let Grep_Skip_Files = 'tags *.jpg *.jpeg *.png *.gif *.exe *.swf *.swp *.bak'
+"let Grep_Default_Options = '-i'
+""let QFix_Height = 40
+""let QFix_PreviewEnable = 0
 
 
-"--------------------------------------
-" NERDTree
-"--------------------------------------
-"let NERDTreeShowHidden		= 1
-let NERDTreeShowBookmarks	= 1			" ツリーにブックマークも表示
-let NERDTreeChDirMode		= 2			" ブックマーク選択時、カレントディレクトリも変更
-let NERDTreeMapActivateNode	='<space>'	" スペースで開閉できるようにする
-let NERDTreeIgnore=['\.$', '\.\.$']
-"let NERDTreeIgnore = ['\.cvs$']
-" 最後に残ったウィンドウがNERDTREEのみのときはvimを閉じる
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+""--------------------------------------
+"" NERDTree
+""--------------------------------------
+""let NERDTreeShowHidden		= 1
+"let NERDTreeShowBookmarks	= 1			" ツリーにブックマークも表示
+"let NERDTreeChDirMode		= 2			" ブックマーク選択時、カレントディレクトリも変更
+"let NERDTreeMapActivateNode	='<space>'	" スペースで開閉できるようにする
+"let NERDTreeIgnore=['\.$', '\.\.$']
+""let NERDTreeIgnore = ['\.cvs$']
+"" 最後に残ったウィンドウがNERDTREEのみのときはvimを閉じる
+""autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
-"--------------------------------------
-" taglist
-"--------------------------------------
-let Tlist_Use_Right_Window	= 1		" 右側に表示
-let Tlist_Show_One_File		= 1		" 常に一つしか表示しない
-let g:tlist_php_settings = 'php;f:function'
-"let Tlist_Ctags_Cmd			= '/usr/local/bin/ctags'
+""--------------------------------------
+"" taglist
+""--------------------------------------
+"let Tlist_Use_Right_Window	= 1		" 右側に表示
+"let Tlist_Show_One_File		= 1		" 常に一つしか表示しない
+"let g:tlist_php_settings = 'php;f:function'
+""let Tlist_Ctags_Cmd			= '/usr/local/bin/ctags'
 
 
-"--------------------------------------
-" CtrlP
-"--------------------------------------
-let g:ctrlp_map						= ''
-let g:ctrlp_working_path_mode		= 0
-let g:ctrlp_jump_to_buffer			= 2
-let g:ctrlp_by_filename				= 1
-let g:ctrlp_max_height				= 20
-let g:ctrlp_extensions				= ['tag']
-let g:ctrlp_match_window_reversed	= 0
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
-  \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
-  \ 'PrtHistory(-1)':       ['<c-j>'],
-  \ 'PrtHistory(1)':        ['<c-k>'],
-  \ }
+""--------------------------------------
+"" CtrlP
+""--------------------------------------
+"let g:ctrlp_map						= ''
+"let g:ctrlp_working_path_mode		= 0
+"let g:ctrlp_jump_to_buffer			= 2
+"let g:ctrlp_by_filename				= 1
+"let g:ctrlp_max_height				= 20
+"let g:ctrlp_extensions				= ['tag']
+"let g:ctrlp_match_window_reversed	= 0
+"let g:ctrlp_prompt_mappings = {
+"  \ 'PrtSelectMove("j")':   ['<c-n>', '<down>'],
+"  \ 'PrtSelectMove("k")':   ['<c-p>', '<up>'],
+"  \ 'PrtHistory(-1)':       ['<c-j>'],
+"  \ 'PrtHistory(1)':        ['<c-k>'],
+"  \ }
 
 
-"--------------------------------------
-" increment-activator
-"--------------------------------------
-let g:increment_activator_filetype_candidates = {
-  \   '_' : [
-  \     ['月', '火', '水', '木', '金', '土', '日'],
-  \   ],
-  \ }
+""--------------------------------------
+"" increment-activator
+""--------------------------------------
+"let g:increment_activator_filetype_candidates = {
+"  \   '_' : [
+"  \     ['月', '火', '水', '木', '金', '土', '日'],
+"  \   ],
+"  \ }
 
 
 "--------------------------------------
@@ -249,15 +242,15 @@ let g:increment_activator_filetype_candidates = {
 "--------------------------------------
 
 
-"--------------------------------------
-" PDV--phpDocumentor-for-Vim
-"--------------------------------------
-let g:pdv_cfg_Type = "type"
-let g:pdv_cfg_Package = ""
-let g:pdv_cfg_Version = ""
-let g:pdv_cfg_Author = ""
-let g:pdv_cfg_Copyright = ""
-let g:pdv_cfg_License = ""
+""--------------------------------------
+"" PDV--phpDocumentor-for-Vim
+""--------------------------------------
+"let g:pdv_cfg_Type = "type"
+"let g:pdv_cfg_Package = ""
+"let g:pdv_cfg_Version = ""
+"let g:pdv_cfg_Author = ""
+"let g:pdv_cfg_Copyright = ""
+"let g:pdv_cfg_License = ""
 
 
 "--------------------------------------
@@ -302,32 +295,33 @@ let g:pdv_cfg_License = ""
 
 
 " vim-operator-replace
-map R  <Plug>(operator-replace)
+"map R  <Plug>(operator-replace)
 
 " tagsジャンプの時に複数ある時は一覧表示
-nnoremap <C-]> g<C-]>
+"nnoremap <C-]> g<C-]>
 
-" ctags生成
-nnoremap <silent> <leader>c :!ctags -R<CR>
+"" ctags生成
+"nnoremap <silent> <leader>c :!ctags -R<CR>
 
 " プラグイン関連
-nnoremap :q<CR> :Bclose<CR>
-nnoremap <silent> <leader>t :NERDTreeToggle<CR>
-nnoremap <silent> <leader>T :NERDTreeFind<CR>
-nnoremap <silent> <leader>f :NERDTreeFind<CR>
-nnoremap <silent> <leader>l :TlistToggle<CR>
-nnoremap <silent> <leader>L :TlistOpen<CR>
-nnoremap <silent> <leader>p :CtrlP<CR>
-nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
-nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <leader>, :CtrlPMRUFiles<CR>
-nnoremap <silent> <leader>g :Rgrep<CR>
-nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
-"nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
+"nnoremap :q<CR> :Bquit<CR>
+"nnoremap :q<CR> :Bclose<CR>
+"nnoremap <silent> <leader>t :NERDTreeToggle<CR>
+"nnoremap <silent> <leader>T :NERDTreeFind<CR>
+"nnoremap <silent> <leader>f :NERDTreeFind<CR>
+"nnoremap <silent> <leader>l :TlistToggle<CR>
+"nnoremap <silent> <leader>L :TlistOpen<CR>
+"nnoremap <silent> <leader>p :CtrlP<CR>
+"nnoremap <silent> <leader>@ :CtrlPBufTag<CR>
+"nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+"nnoremap <silent> <leader>, :CtrlPMRUFiles<CR>
+"nnoremap <silent> <leader>g :Rgrep<CR>
+"nnoremap <silent> <leader>d :call PhpDocSingle()<CR>
+""nnoremap <silent> <leader>h :<C-u>help<Space><C-r><C-w><Enter>	" カーソル下のキーワードをヘルプで引く
 
 " vim-over
-nnoremap <silent> <Leader>r :OverCommandLine<CR>%s/
-vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
+"nnoremap <silent> <Leader>r :OverCommandLine<CR>%s/
+"vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
 
 " ファンクションキー割り当て
 " ヘルプ
@@ -350,14 +344,15 @@ vnoremap <silent> <Leader>r :OverCommandLine<CR>s/
 
 " 独自シンタックスの設定
 "au BufNewFile,BufRead *.txt setf mine	"setfだと反映されない
-au BufNewFile,BufRead *.txt set filetype=mine
+"au BufNewFile,BufRead *.txt set filetype=mine
+au BufNewFile,BufRead *.txt set filetype=markdown
+au BufNewFile,BufRead *.md set filetype=markdown
 
 
 " ローカルのvimrcを読み込む
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
 
 
 "===========================================================================
@@ -370,6 +365,7 @@ if has("win32") || has("win64")
 
 elseif has('mac')
   " Mac用
+  set clipboard=unnamed,autoselect
 
 elseif has('unix')
   " UNIX用
@@ -389,6 +385,7 @@ if has("kaoriya")
   autocmd FileType text setlocal textwidth=0
 
 endif
+
 
 
 
