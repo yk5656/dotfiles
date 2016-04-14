@@ -162,10 +162,10 @@ RPROMPT='${vcs_info_msg_0_}'
 alias ssh='TERM=xterm ssh'
 
 # tmux自動起動
-if [ -z $TMUX ]; then
-  # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
-  tmux -2
-fi
+#if [ -z $TMUX ]; then
+#  # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
+#  tmux -2
+#fi
 
 # ローカルのzshrcを読み込む
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
@@ -173,3 +173,9 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+
+
+alias ctags="`brew --prefix`/bin/ctags"
+
