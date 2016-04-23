@@ -3,10 +3,6 @@
 #-------------------------------------------------------------------------------
 export LANG=ja_JP.UTF-8                 # 文字コードをUTF-8に設定
 
-# 補完
-autoload -U compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'     # 大文字小文字区別しない
-
 
 #-------------------------------------------------------------------------------
 # オプション
@@ -39,6 +35,20 @@ setopt ignore_eof                       # Ctrl+Dでzshを終了しない
 setopt interactive_comments             # コマンドラインでも'#'以降をコメントと見なす
 setopt prompt_subst                     # プロンプト内で変数展開などを行う
 setopt transient_rprompt                # 現在のコマンドラインのみ右プロンプトを表示
+
+
+#-------------------------------------------------------------------------------
+# 補完
+#-------------------------------------------------------------------------------
+
+# zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+autoload -U compinit
+compinit
+
+# 大文字小文字区別しない
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 
 #-------------------------------------------------------------------------------
@@ -128,11 +138,12 @@ bindkey '^r' peco-select-history
 # その他
 #-------------------------------------------------------------------------------
 
-## tmux自動起動
-##if [ -z $TMUX ]; then
-##  # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
-##  tmux -2
-##fi
+# tmux自動起動
+if [ -z $TMUX ]; then
+  # tmuxのオプションに-2を付けないとubuntuのtmux上でvimがカラーにならない
+  # tmux -2
+  tmux
+fi
 #
 
 # ローカルのzshrcを読み込む
